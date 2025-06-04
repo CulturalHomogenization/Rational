@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c512e7hi4jpcr"]
+
+[ext_resource type="Script" uid="uid://brqrx5041feh4" path="res://node_3d.gd" id="1_myinc"]
+
+[sub_resource type="Curve3D" id="Curve3D_njov2"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_myinc")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_njov2")
