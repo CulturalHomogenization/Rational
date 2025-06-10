@@ -1,4 +1,3 @@
-@tool
 extends MeshInstance3D
 
 const size := 256.0
@@ -12,6 +11,7 @@ const size := 256.0
 	set(new_noise):
 		noise = new_noise
 		update_mesh()
+		
 		if noise:
 			noise.changed.connect(update_mesh)
 
@@ -19,6 +19,7 @@ const size := 256.0
 	set(new_height):
 		height = new_height
 		update_mesh()
+		create_trimesh_collision()
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height
@@ -31,6 +32,10 @@ func get_normal(x: float, y: float) -> Vector3:
 		(get_height(x, y + epilson) - get_height(x, y - epilson)) / (2.0 * epilson)
 	)
 	return normal.normalized()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("test"):
+		noise.seed = randi_range(0, 100000000)
 
 func update_mesh() -> void:
 	var plane := PlaneMesh.new()
@@ -60,3 +65,10 @@ func update_mesh() -> void:
 	var array_mesh := ArrayMesh.new()
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, plane_arrays)
 	mesh = array_mesh
+	var static_body = get_node("StaticBody3D")
+	if static_body:
+		static_body.queue_free()
+	create_trimesh_collision()
+	
+
+	
