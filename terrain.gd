@@ -15,7 +15,7 @@ const size := 256.0
 		if noise:
 			noise.changed.connect(update_mesh)
 
-@export_range(4.0, 128.0, 4.0) var height := 64.0:
+@export_range(4.0, 128.0, 4.0) var height := 32.0:
 	set(new_height):
 		height = new_height
 		update_mesh()
@@ -65,10 +65,8 @@ func update_mesh() -> void:
 	var array_mesh := ArrayMesh.new()
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, plane_arrays)
 	mesh = array_mesh
-	var static_body = get_node("StaticBody3D")
-	if static_body:
-		static_body.queue_free()
+	for child in get_children():
+		if child is StaticBody3D:
+			print("found")
+			child.queue_free()
 	create_trimesh_collision()
-	
-
-	
