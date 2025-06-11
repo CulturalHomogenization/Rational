@@ -1,6 +1,7 @@
+@tool
 extends MeshInstance3D
 
-const size := 256.0
+const size := 500.0
 
 @export_range(4, 256, 4) var resolution := 32:
 	set(new_resolution):
@@ -10,8 +11,10 @@ const size := 256.0
 @export var noise : FastNoiseLite:
 	set(new_noise):
 		noise = new_noise
+		for child in get_children():
+			if child is StaticBody3D:
+				child.queue_free()
 		update_mesh()
-		
 		if noise:
 			noise.changed.connect(update_mesh)
 
@@ -20,6 +23,8 @@ const size := 256.0
 		height = new_height
 		update_mesh()
 		create_trimesh_collision()
+
+
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height
@@ -67,6 +72,11 @@ func update_mesh() -> void:
 	mesh = array_mesh
 	for child in get_children():
 		if child is StaticBody3D:
-			print("found")
 			child.queue_free()
 	create_trimesh_collision()
+
+
+func _on_ready() -> void:
+	for child in get_children():
+			if child is StaticBody3D:
+				child.queue_free()
