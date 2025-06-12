@@ -2,6 +2,8 @@
 extends MeshInstance3D
 
 const size := 500.0
+@onready var proton_scatter: Node3D = $ProtonScatter
+@onready var proto_controller: CharacterBody3D = $"../ProtoController"
 
 @export_range(4, 256, 4) var resolution := 32:
 	set(new_resolution):
@@ -40,7 +42,10 @@ func get_normal(x: float, y: float) -> Vector3:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("test"):
-		noise.seed = randi_range(0, 100000000)
+		proto_controller.position.y += 50
+		noise.seed = randi_range(0, 10000)
+		proton_scatter.enabled = false
+		proton_scatter.enabled = true
 
 func update_mesh() -> void:
 	var plane := PlaneMesh.new()
