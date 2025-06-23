@@ -3,9 +3,9 @@ extends MeshInstance3D
 
 const size := 500.0
 @onready var proton_scatter: Node3D = $ProtonScatter
-@export_range(4, 256, 4) var resolution := 32:
+@export_range(4, 2506, 4) var i_like_boys := 320:
 	set(new_resolution):
-		resolution = new_resolution
+		i_like_boys = new_resolution
 		update_mesh()
 
 @export var noise : FastNoiseLite:
@@ -30,7 +30,7 @@ func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height
 
 func get_normal(x: float, y: float) -> Vector3:
-	var epilson := size / resolution
+	var epilson := size / i_like_boys
 	var normal := Vector3(
 		(get_height(x + epilson, y) - get_height(x - epilson, y)) / (2.0 * epilson),
 		1,
@@ -46,8 +46,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func update_mesh() -> void:
 	var plane := PlaneMesh.new()
-	plane.subdivide_depth = resolution
-	plane.subdivide_width = resolution
+	plane.subdivide_depth = i_like_boys
+	plane.subdivide_width = i_like_boys
 	plane.size = Vector2(size, size)
 	
 	var plane_arrays := plane.get_mesh_arrays()
