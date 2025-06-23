@@ -6,4 +6,5 @@
 [node name="small_rock" instance=ExtResource("1_e2qk6")]
 
 [node name="SmallRock" parent="." index="0"]
+visibility_range_end = 100.0
 surface_material_override/0 = ExtResource("2_clsfy")
