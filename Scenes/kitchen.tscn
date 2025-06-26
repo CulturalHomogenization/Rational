@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bao4vfkn1220f"]
+
+[ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
+[ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pfa8w"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_7u47w"]
+sky_material = SubResource("ProceduralSkyMaterial_pfa8w")
+
+[sub_resource type="Environment" id="Environment_23qos"]
+background_mode = 2
+sky = SubResource("Sky_7u47w")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7u47w"]
+data = PackedVector3Array(-10, -0.5, -5, -10, 0, -4.5, -10, 0, 4.5, 10, 0, 4.5, 10, -0.5, 5, 10, 0, 5, 10, -0.5, 5, 10, 0, 4.5, 10, 0, -4.5, -10, -0.5, 5, 10, 0, 5, 10, -0.5, 5, -10, -0.5, 5, 10, -0.5, 5, 10, -0.5, -5, 10, -0.5, 5, 10, 0, -4.5, 10, -0.5, -5, 10, 0, -5, 10, -0.5, -5, 10, 0, -4.5, 9, 0.5, -4.5, 9, 0.5, 4.5, -9, 0.5, -4.5, -10, 0, -5, 10, -0.5, -5, 10, 0, -5, 10, 0, 5, -10, -0.5, 5, -10, 0, 5, -9, 0.5, 4.5, -9, 0.5, -4.5, 9, 0.5, 4.5, -10, 0, 5, -10, -0.5, 5, -10, 0, 4.5, -10, -0.5, -5, -10, 0, 4.5, -10, -0.5, 5, 10, -0.5, -5, -10, 0, -5, -10, -0.5, -5, -10, -0.5, 5, 10, -0.5, -5, -10, -0.5, -5, -10, 0, -4.5, -10, -0.5, -5, -10, 0, -5, 10, 4, 4.5, 9, 4, 4.5, 10, 4, -4.5, 9, 4, -4.5, 9, 4, 4.5, 9, 0.5, 4.5, 10, 4, -4.5, 9, 4, 4.5, 9, 4, -4.5, 10, 4, 4.5, 10, 4, -4.5, 10, 0, -4.5, 9, 4, -4.5, 9, 0.5, 4.5, 9, 0.5, -4.5, 10, 0, 4.5, 10, 4, 4.5, 10, 0, -4.5, -10, 4, -4.5, -10, 4, 4.5, -10, 0, 4.5, -10, 0, 4.5, -10, 0, -4.5, -10, 4, -4.5, -9, 4, 4.5, -10, 4, 4.5, -9, 4, -4.5, -9, 4, -4.5, -10, 4, 4.5, -10, 4, -4.5, -9, 4, 4.5, -9, 4, -4.5, -9, 0.5, -4.5, -9, 0.5, -4.5, -9, 0.5, 4.5, -9, 4, 4.5, 9, 0.5, -4.5, -9, 4, -4.5, 9, 4, -4.5, 10, 0, -5.5, 10, 4, -5.5, -10, 4, -5.5, 10, 0, -5, 10, 4, -4.5, 10, 0, -5.5, -10, 4, -5.5, 10, 4, -4.5, 9, 4, -4.5, -10, 0, -5, -10, 0, -5.5, -10, 4, -5.5, -10, 0, -4.5, -10, 0, -5, -10, 4, -5.5, 10, 4, -5.5, 10, 4, -4.5, -10, 4, -5.5, 10, 4, -4.5, 10, 4, -5.5, 10, 0, -5.5, -10, 0, -5.5, -10, 0, -5, 10, 0, -5.5, -10, 0, -5, 10, 0, -5, 10, 0, -5.5, 10, 0, -5.5, -10, 4, -5.5, -10, 0, -5.5, 10, 4, -4.5, 10, 0, -5, 10, 0, -4.5, 9, 0.5, -4.5, -9, 0.5, -4.5, -9, 4, -4.5, -10, 4, -5.5, -10, 4, -4.5, -10, 0, -4.5, -10, 4, -5.5, -9, 4, -4.5, -10, 4, -4.5, -10, 4, -5.5, 9, 4, -4.5, -9, 4, -4.5, 10, 4, 5.5, 9, 4, 4.5, 10, 4, 4.5, -10, 4, 4.5, -10, 0, 5, -10, 0, 4.5, 10, 4, 5.5, 10, 4, 4.5, 10, 0, 4.5, -10, 0, 5.5, -10, 0, 5, -10, 4, 4.5, 9, 4, 4.5, 10, 4, 5.5, -9, 4, 4.5, -10, 0, 5, -10, 0, 5.5, 10, 0, 5, -10, 4, 4.5, -10, 4, 5.5, -10, 0, 5.5, -9, 0.5, 4.5, 9, 4, 4.5, -9, 4, 4.5, 10, 0, 5, 10, 0, 5.5, 10, 4, 5.5, 10, 0, 5, 10, 4, 5.5, 10, 0, 4.5, -10, 4, 5.5, 10, 4, 5.5, -10, 0, 5.5, -10, 4, 4.5, 10, 4, 5.5, -10, 4, 5.5, -9, 4, 4.5, 10, 4, 5.5, -10, 4, 4.5, -9, 0.5, 4.5, 9, 0.5, 4.5, 9, 4, 4.5, 10, 4, 5.5, 10, 0, 5.5, -10, 0, 5.5, 10, 0, 5, -10, 0, 5.5, 10, 0, 5.5)
+
+[node name="Kitchen" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.165151, 0.986268, 0, -0.986268, 0.165151, 0, 9.40594, 2)
+attributes = SubResource("CameraAttributesPractical_pfa8w")
+current = true
+fov = 80.8
+size = 10.0
+near = 0.009
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_23qos")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15, 0)
+light_energy = 3.424
+omni_range = 4096.0
+
+[node name="RigidBody3D" type="StaticBody3D" parent="."]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7u47w")
+
+[node name="Room" type="CSGCombiner3D" parent="RigidBody3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D/Room"]
+size = Vector3(20, 1, 10)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="RigidBody3D/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, 0)
+size = Vector3(1, 4, 10)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="RigidBody3D/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, 0)
+size = Vector3(1, 4, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="RigidBody3D/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+size = Vector3(20, 4, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="RigidBody3D/Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
+size = Vector3(20, 4, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_7u47w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45118, 2, 0.995445)
+
+[node name="TechStation" parent="." instance=ExtResource("2_23qos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4)
