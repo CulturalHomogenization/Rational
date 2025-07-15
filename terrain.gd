@@ -1,9 +1,15 @@
 @tool
 extends MeshInstance3D
 
+<<<<<<< Updated upstream
 const size := 256.0
 
 @export_range(4, 256, 4) var resolution := 32:
+=======
+const size := 5000.0
+@onready var proton_scatter: Node3D = $ProtonScatter
+@export_range(4, 2506, 4) var resolution := 320:
+>>>>>>> Stashed changes
 	set(new_resolution):
 		resolution = new_resolution
 		update_mesh()
@@ -15,7 +21,11 @@ const size := 256.0
 		if noise:
 			noise.changed.connect(update_mesh)
 
+<<<<<<< Updated upstream
 @export_range(4.0, 128.0, 4.0) var height := 64.0:
+=======
+@export_range(4.0, 2048.0, 4.0) var height := 2048.0:
+>>>>>>> Stashed changes
 	set(new_height):
 		height = new_height
 		update_mesh()
