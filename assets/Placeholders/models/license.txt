@@ -1,0 +1,11 @@
+Model Information:
+* title:	low-poly tank
+* source:	https://sketchfab.com/3d-models/low-poly-tank-6ddd75b5c23d4d2f8d7c77fd73a29985
+* author:	linus1178 (https://sketchfab.com/linus1178)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "low-poly tank" (https://sketchfab.com/3d-models/low-poly-tank-6ddd75b5c23d4d2f8d7c77fd73a29985) by linus1178 (https://sketchfab.com/linus1178) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
