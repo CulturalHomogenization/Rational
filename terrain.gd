@@ -3,7 +3,7 @@ extends MeshInstance3D
 
 const size := 5000
 @onready var proton_scatter: Node3D = $ProtonScatter
-@export_range(4, 2506, 4) var resolution := 320:
+@export_range(4, 2506, 4) var resolution := 1000:
 	set(new_resolution):
 		resolution = new_resolution
 		update_mesh()
