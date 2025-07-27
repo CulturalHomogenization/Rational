@@ -1,12 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://6w0kmgtxep2k"]
 
-[ext_resource type="Script" uid="uid://bclf2asqrj62o" path="res://Scenes/interactable.gd" id="1_lsnmk"]
+[ext_resource type="Script" uid="uid://c1tcl8mgcd5mu" path="res://Scenes/tech_station.gd" id="1_lsnmk"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gb3lo"]
 data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
 
 [node name="TechStation" type="StaticBody3D"]
 script = ExtResource("1_lsnmk")
+prompt_message = "Upgrade Tech"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

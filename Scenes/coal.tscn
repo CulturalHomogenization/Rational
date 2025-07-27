@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkafrr4m0ddkx"]
+[gd_scene load_steps=4 format=3 uid="uid://dkafrr4m0ddkx"]
+
+[ext_resource type="Script" uid="uid://6ypqtkj4x3a5" path="res://Scenes/coal.gd" id="1_x6f8n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4v3ac"]
 
@@ -9,8 +11,12 @@ mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_4v3ac")
 inertia = Vector3(1, 1, 1)
 can_sleep = false
+script = ExtResource("1_x6f8n")
+prompt_message = "Pickup (Coal)"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_4v3ac")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

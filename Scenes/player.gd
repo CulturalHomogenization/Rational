@@ -7,6 +7,10 @@ const GRAVITY := 20.0
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var interact: Label3D = $InteractRay/Interact
 @onready var interact_ray: RayCast3D = $InteractRay
+@onready var hold_marker: Marker3D = $hold
+
+var picked_up_item : Interactable
+
 
 func _push_away_rigid_bodies():
 	for i in  get_slide_collision_count():
@@ -66,6 +70,15 @@ func _physics_process(delta):
 			interact.text = collider.get_prompt()
 			if Input.is_action_just_pressed(collider.prompt_input):
 				collider.interact(owner)
+				if collider.is_in_group("pickup"):
+					print("detected pickup item")
+					if picked_up_item == collider:
+						picked_up_item = null
+					else:
+						picked_up_item == collider
+					print(picked_up_item)
+		
 	else:
 		interact.text = ""
-		
+	if picked_up_item != null:
+		picked_up_item.global_position = hold_marker.global_position

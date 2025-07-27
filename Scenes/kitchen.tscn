@@ -75,7 +75,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45118, 2, 0.995445)
 
 [node name="TechStation" parent="." instance=ExtResource("2_23qos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4)
-prompt_message = "Stupid Boy"
 
 [node name="Coal" parent="." instance=ExtResource("3_lvc4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074579, 1.97288, -3.01134)
