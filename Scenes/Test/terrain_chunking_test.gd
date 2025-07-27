@@ -8,9 +8,13 @@ var proton_scatter : Node3D
 func _ready():
 	for j in range(TERRAIN_SIZE):
 		for i in range(TERRAIN_SIZE):
+			print("start")
 			var chunk := TERRAIN_CHUNK.instantiate()
+			print("instantiating")
 			add_child(chunk)
+			await child_entered_tree
+			print("added_child")
 			chunk.position = Vector3(i * CHUNK_SIZE, 0, j * CHUNK_SIZE)
-			if chunk.has_signal("build_completed"):
-				await chunk.build_completed
+			print("position set  ", chunk.position)
+			await get_tree().create_timer(2).timeout
 			print("Chunk placed:", i, j)

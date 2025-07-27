@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkafrr4m0ddkx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4v3ac"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4v3ac"]
+
+[node name="Coal" type="RigidBody3D" groups=["pickup"]]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_4v3ac")
+inertia = Vector3(1, 1, 1)
+can_sleep = false
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4v3ac")
