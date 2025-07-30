@@ -11,6 +11,16 @@ const GRAVITY := 20.0
 
 var picked_up_item : Interactable
 
+func pick_object():
+	var collider = interact_ray.get_collider()
+	if collider != null and collider.is_in_group("pickup"):
+		picked_up_item = collider
+		print(picked_up_item)
+
+func remove_object():
+	if picked_up_item != null:
+		picked_up_item.collision_shape_3d.disabled = false
+		picked_up_item = null
 
 func _push_away_rigid_bodies():
 	for i in  get_slide_collision_count():
@@ -64,21 +74,26 @@ func _physics_process(delta):
 			if anim_player.current_animation != "Idle":
 				anim_player.play("Idle")
 	
-	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
-		if collider is Interactable:
-			interact.text = collider.get_prompt()
-			if Input.is_action_just_pressed(collider.prompt_input):
-				collider.interact(owner)
-				if collider.is_in_group("pickup"):
-					print("detected pickup item")
-					if picked_up_item == collider:
-						picked_up_item = null
-					else:
-						picked_up_item == collider
-					print(picked_up_item)
-		
-	else:
-		interact.text = ""
-	if picked_up_item != null:
+	if picked_up_item == null:
+		if interact_ray.is_colliding():
+			var collider = interact_ray.get_collider()
+			if collider is Interactable:
+				interact.text = collider.get_prompt()
+				if Input.is_action_just_pressed(collider.prompt_input):
+					collider.interact(self)
+					if collider.is_in_group("pickup"):
+						if picked_up_item == null:
+							pick_object()
+		else:
+			interact.text = ""
+
+	elif picked_up_item != null:
 		picked_up_item.global_position = hold_marker.global_position
+		picked_up_item.global_rotation = Vector3.ZERO
+		if Input.is_action_just_pressed("interact"):
+			var overlap = picked_up_item.clipper_stopper.get_overlapping_bodies()
+			print(overlap)
+			if len(overlap) > 1:
+				pass
+			elif len(overlap) == 0 or overlap[0] == self:
+				remove_object()

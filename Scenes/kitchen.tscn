@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bao4vfkn1220f"]
+[gd_scene load_steps=11 format=3 uid="uid://bao4vfkn1220f"]
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
 [ext_resource type="PackedScene" uid="uid://dkafrr4m0ddkx" path="res://Scenes/coal.tscn" id="3_lvc4q"]
+[ext_resource type="PackedScene" uid="uid://w147u5sr1fyf" path="res://Scenes/iron.tscn" id="4_6pjjr"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
 
@@ -28,7 +29,7 @@ friction = 2.0
 [node name="Kitchen" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.165151, 0.986268, 0, -0.986268, 0.165151, 0, 9.40594, 2)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.79906, -0.207665)
 attributes = SubResource("CameraAttributesPractical_pfa8w")
 current = true
 fov = 80.8
@@ -44,29 +45,29 @@ light_energy = 2.0
 light_volumetric_fog_energy = 2.315
 omni_range = 4096.0
 
-[node name="RigidBody3D" type="StaticBody3D" parent="."]
+[node name="Room" type="StaticBody3D" parent="."]
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Room"]
 shape = SubResource("ConcavePolygonShape3D_7u47w")
 
-[node name="Room" type="CSGCombiner3D" parent="RigidBody3D"]
+[node name="CSGCombiner" type="CSGCombiner3D" parent="Room"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D/Room"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Room/CSGCombiner"]
 size = Vector3(20, 1, 10)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="RigidBody3D/Room"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Room/CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, 0)
 size = Vector3(1, 4, 10)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="RigidBody3D/Room"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Room/CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, 0)
 size = Vector3(1, 4, 10)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="RigidBody3D/Room"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Room/CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
 size = Vector3(20, 4, 1)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="RigidBody3D/Room"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Room/CSGCombiner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
 size = Vector3(20, 4, 1)
 
@@ -80,3 +81,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074579, 1.97288, -3.01134)
 physics_material_override = SubResource("PhysicsMaterial_lvc4q")
 inertia = Vector3(0, 0, 0)
+
+[node name="iron" parent="." instance=ExtResource("4_6pjjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09285, 2.44808, 0.437623)
