@@ -1,6 +1,5 @@
 extends Interactable
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
-@onready var clipper_stopper: Area3D = $ClipperStopper
 
 func _on_interacted(body: Variant) -> void:
 	var key_name = ""

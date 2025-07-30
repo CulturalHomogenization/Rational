@@ -9,7 +9,7 @@ const GRAVITY := 20.0
 @onready var interact_ray: RayCast3D = $InteractRay
 @onready var hold_marker: Marker3D = $hold
 
-var picked_up_item : Interactable
+var picked_up_item : RigidBody3D
 
 func pick_object():
 	var collider = interact_ray.get_collider()
@@ -21,6 +21,24 @@ func remove_object():
 	if picked_up_item != null:
 		picked_up_item.collision_shape_3d.disabled = false
 		picked_up_item = null
+
+func check_if_in_wall(body :RigidBody3D) -> bool:
+	var space_state :PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var collision_node :CollisionShape3D = body.get_node("CollisionShape3D")
+	var query :PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
+	query.shape = collision_node.shape
+	query.transform = body.global_transform
+	query.transform = query.transform.scaled(Vector3(0.95,0.95,0.95))
+	query.collision_mask = 1  # Adjust to match the wall's layer mask
+	query.exclude = [body]    # Avoid detecting itself
+
+	var results :Array[Dictionary] = space_state.intersect_shape(query, 32)
+	print(results)
+	for result in results:
+		var collider :Object = result.collider
+		if collider is StaticBody3D or collider is RigidBody3D:
+			return false
+	return true
 
 func _push_away_rigid_bodies():
 	for i in  get_slide_collision_count():
@@ -91,9 +109,5 @@ func _physics_process(delta):
 		picked_up_item.global_position = hold_marker.global_position
 		picked_up_item.global_rotation = Vector3.ZERO
 		if Input.is_action_just_pressed("interact"):
-			var overlap = picked_up_item.clipper_stopper.get_overlapping_bodies()
-			print(overlap)
-			if len(overlap) > 1:
-				pass
-			elif len(overlap) == 0 or overlap[0] == self:
+			if check_if_in_wall(picked_up_item) == true:
 				remove_object()
