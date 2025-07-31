@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://24fa22jdgssc"]
+
+[node name="ConveyorBelt" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 0)
+size = Vector3(6, 1, 1)

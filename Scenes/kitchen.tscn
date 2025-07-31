@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bao4vfkn1220f"]
+[gd_scene load_steps=12 format=3 uid="uid://bao4vfkn1220f"]
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
 [ext_resource type="PackedScene" uid="uid://dkafrr4m0ddkx" path="res://Scenes/coal.tscn" id="3_lvc4q"]
 [ext_resource type="PackedScene" uid="uid://c0lvxfn5pdw24" path="res://Scenes/iron.tscn" id="4_6pjjr"]
+[ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
 
@@ -83,18 +84,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074579, 1.97288, -3.01134)
 physics_material_override = SubResource("PhysicsMaterial_lvc4q")
 inertia = Vector3(0, 0, 0)
 
-[node name="iron7" parent="." instance=ExtResource("4_6pjjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5571, 15.6885, 2.62574)
-
-[node name="iron6" parent="." instance=ExtResource("4_6pjjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46425, 13.2404, 2.18811)
-
-[node name="iron5" parent="." instance=ExtResource("4_6pjjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3714, 10.7923, 1.75049)
-
-[node name="iron4" parent="." instance=ExtResource("4_6pjjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27855, 8.34424, 1.31287)
-
 [node name="iron3" parent="." instance=ExtResource("4_6pjjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1857, 4.89616, 0.875246)
 
@@ -106,3 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 1)
 
 [node name="iron2" parent="." instance=ExtResource("4_6pjjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ConveyorBelt" parent="." instance=ExtResource("5_pb1w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -4)
