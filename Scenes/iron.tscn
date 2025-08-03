@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c6m4c0bbqdwhy" path="res://Scenes/iron.gd" id="1_lfcn5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lfcn5"]
+friction = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_76jc4"]
 

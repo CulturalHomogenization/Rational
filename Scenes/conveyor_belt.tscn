@@ -1,7 +1,29 @@
-[gd_scene format=3 uid="uid://24fa22jdgssc"]
+[gd_scene load_steps=4 format=3 uid="uid://24fa22jdgssc"]
 
-[node name="ConveyorBelt" type="Node3D"]
+[ext_resource type="Script" uid="uid://3s636fj8dbiy" path="res://Scenes/ConveyorBelt.gd" id="1_xgy6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4h2y"]
+size = Vector3(6, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgy6c"]
+size = Vector3(5.99585, 0.622559, 1)
+
+[node name="ConveyorBelt" type="StaticBody3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 0)
 size = Vector3(6, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25204, 0, 0)
+shape = SubResource("BoxShape3D_u4h2y")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_xgy6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24768, 0.730583, 0)
+shape = SubResource("BoxShape3D_xgy6c")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
