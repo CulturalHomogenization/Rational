@@ -9,13 +9,13 @@ class_name NonCrossingBezierCurve
 @export_group("Path Settings")
 @export var start_point: Vector3 = Vector3.ZERO : set = set_start_point
 @export var end_point: Vector3 = Vector3(50, 0, 0) : set = set_end_point
-@export var path_complexity: int = 5 : set = set_path_complexity # Number of segments
+@export var path_complexity: int = 30 : set = set_path_complexity # Number of segments
 @export var curve_intensity: float = 1.0 : set = set_curve_intensity # How curvy the path is
 
 # Generation Parameters
 @export_group("Generation")
-@export var path_width: float = 20.0 : set = set_path_width # How wide the path can deviate left/right
-@export var smoothness: float = 0.7 : set = set_smoothness # Control point smoothness (0-1)
+@export var path_width: float = 30.0 : set = set_path_width # How wide the path can deviate left/right
+@export var smoothness: float = 1 : set = set_smoothness # Control point smoothness (0-1)
 @export var avoid_sharp_turns: bool = true : set = set_avoid_sharp_turns
 
 # Randomization
@@ -65,6 +65,7 @@ func generate_curve():
 			print("Attempt ", attempts, " failed - regenerating...")
 	
 	if success:
+		smooth_curve(1)  # Optional, for extra smoothing
 		print("Curve generated successfully in ", attempts, " attempts")
 		
 		if debug_visualize:
@@ -121,7 +122,7 @@ func generate_horizontal_waypoints() -> PackedVector3Array:
 		smooth_deviation = clamp(smooth_deviation, -deviation_strength, deviation_strength)
 		
 		# Apply additional noise for natural variation
-		var noise_deviation = sin(t * PI * 3.0 + rng.randf() * TAU) * deviation_strength * 0.2
+		var noise_deviation = sin(t * PI * 1.5 + rng.randf() * TAU) * deviation_strength * 0.05
 		var final_deviation = smooth_deviation + noise_deviation
 		
 		# Create the waypoint (only horizontal deviation)
@@ -141,61 +142,57 @@ func generate_horizontal_waypoints() -> PackedVector3Array:
 func create_bezier_from_waypoints(waypoints: PackedVector3Array) -> bool:
 	if waypoints.size() < 2:
 		return false
-	
+
 	curve_3d.clear_points()
-	
-	# Calculate forward direction for handle orientation
+
 	var main_forward = (end_point - start_point).normalized()
 	var main_right = Vector3.UP.cross(main_forward).normalized()
-	
+
 	for i in range(waypoints.size()):
 		var point = waypoints[i]
 		var in_handle = Vector3.ZERO
 		var out_handle = Vector3.ZERO
-		
-		# Calculate control handles for smooth curves (horizontal only)
+
 		if i > 0 and i < waypoints.size() - 1:
 			var prev_point = waypoints[i - 1]
 			var next_point = waypoints[i + 1]
-			
-			# Calculate the general forward direction at this point
+
 			var local_forward = (next_point - prev_point).normalized()
-			local_forward.y = 0 # Keep horizontal
+			local_forward.y = 0
 			local_forward = local_forward.normalized()
-			
+
 			var distance_prev = Vector2(point.x - prev_point.x, point.z - prev_point.z).length()
 			var distance_next = Vector2(next_point.x - point.x, next_point.z - point.z).length()
-			
-			# Create smooth handles
-			var handle_length = min(distance_prev, distance_next) * smoothness * curve_intensity
-			
+			var avg_distance = (distance_prev + distance_next) * 0.5
+
+			var handle_length = avg_distance * smoothness * curve_intensity
+
 			if avoid_sharp_turns:
-				# Calculate horizontal angle change
 				var prev_dir = Vector2(point.x - prev_point.x, point.z - prev_point.z).normalized()
 				var next_dir = Vector2(next_point.x - point.x, next_point.z - point.z).normalized()
 				var angle = prev_dir.angle_to(next_dir)
-				var angle_factor = 1.0 - (abs(angle) / PI)
-				handle_length *= max(0.1, angle_factor)
-			
+				var angle_factor = pow(1.0 - (abs(angle) / PI), 2)
+				handle_length *= lerp(0.1, 1.0, angle_factor)
+
 			in_handle = -local_forward * handle_length
 			out_handle = local_forward * handle_length
-			
-			# Add some controlled random variation (horizontal only)
-			var random_angle = rng.randf_range(-0.3, 0.3) * curve_intensity
+
+			var random_angle = rng.randf_range(-0.2, 0.2) * curve_intensity
 			in_handle = Vector3(
 				in_handle.x * cos(random_angle) - in_handle.z * sin(random_angle),
-				0, # No Y component
+				0,
 				in_handle.x * sin(random_angle) + in_handle.z * cos(random_angle)
 			)
 			out_handle = Vector3(
 				out_handle.x * cos(-random_angle) - out_handle.z * sin(-random_angle),
-				0, # No Y component
+				0,
 				out_handle.x * sin(-random_angle) + out_handle.z * cos(-random_angle)
 			)
-		
+
 		curve_3d.add_point(point, in_handle, out_handle)
-	
+
 	return true
+
 
 func has_horizontal_intersections() -> bool:
 	if not curve_3d or curve_3d.get_point_count() < 3:
@@ -269,6 +266,22 @@ func generate_simple_fallback():
 	curve_3d.add_point(end_point)
 	
 	print("Generated fallback curve")
+	
+func smooth_curve(iterations: int = 1):
+	"""Optional: Post-smooth the curve using a simplified Chaikin algorithm"""
+	for _i in range(iterations):
+		var new_positions = []
+		for j in range(curve_3d.get_point_count() - 1):
+			var p0 = curve_3d.get_point_position(j)
+			var p1 = curve_3d.get_point_position(j + 1)
+			var q = p0.lerp(p1, 0.25)
+			var r = p0.lerp(p1, 0.75)
+			new_positions.append(q)
+			new_positions.append(r)
+
+		curve_3d.clear_points()
+		for pt in new_positions:
+			curve_3d.add_point(pt)
 
 func create_debug_visualization():
 	"""Create debug visualization of the curve"""
