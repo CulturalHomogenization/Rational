@@ -4,7 +4,7 @@ extends Node3D
 func _ready():
 	if not terrain:
 		terrain = $Terrain
-	
+
 	terrain.create_trimesh_collision()
 	
 	
