@@ -7,7 +7,7 @@ friction = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_76jc4"]
 
-[node name="iron" type="RigidBody3D" groups=["pickup"]]
+[node name="Iron" type="RigidBody3D" groups=["pickup"]]
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_lfcn5")
 continuous_cd = true
