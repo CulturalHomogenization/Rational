@@ -1,7 +1,5 @@
 @tool
 extends Node3D
-class_name NonCrossingBezierCurve
-
 ## Generates a random Bézier curve that never crosses itself
 ## Creates a smooth, winding path from start to end point (left/right only)
 
