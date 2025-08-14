@@ -14,6 +14,11 @@ config/name="Rational"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+UpgradeData="*res://Scenes/UpgradeData.gd"
+Inventory="*res://Scenes/Inventory.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")

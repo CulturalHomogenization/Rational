@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw6i3j06ujwui"]
+[gd_scene load_steps=6 format=3 uid="uid://dw6i3j06ujwui"]
 
 [ext_resource type="Script" uid="uid://vua2082yjhmk" path="res://Scenes/upgrade_area.gd" id="1_47it6"]
 [ext_resource type="Texture2D" uid="uid://6d6ffhtethkp" path="res://icon.svg" id="1_f5ow3"]
+[ext_resource type="Script" uid="uid://bxhwa605i2gee" path="res://Scenes/upgrade.gd" id="2_o0s84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnjdq"]
 size = Vector2(128, 128)
@@ -11,10 +12,11 @@ size = Vector2(20, 8)
 
 [node name="Upgrade" type="Sprite2D"]
 texture = ExtResource("1_f5ow3")
+script = ExtResource("2_o0s84")
 
 [node name="UpgradeArea" type="Area2D" parent="."]
 script = ExtResource("1_47it6")
-tooltip_text = "1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua1hsuidfghuiashdua"
+tooltip_text = "Upgrade: doule 0 7"
 tooltip_icon = ExtResource("1_f5ow3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeArea"]
