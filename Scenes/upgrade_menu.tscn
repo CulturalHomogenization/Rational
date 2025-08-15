@@ -4,7 +4,9 @@
 
 [node name="UpgradeMenu" type="Node2D"]
 
-[node name="Upgrade" parent="." instance=ExtResource("1_ltp0x")]
+[node name="1" parent="." instance=ExtResource("1_ltp0x")]
 position = Vector2(122, 110)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="ready" from="1" to="1" method="_on_ready"]

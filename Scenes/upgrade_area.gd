@@ -1,9 +1,12 @@
 extends Area2D
 
-@export var tooltip_text := "Default Tooltip"
 @export var tooltip_icon: Texture2D
 
 var tooltip_instance: PanelContainer
+@export var tooltip_text : String
+
+func _ready() -> void:
+	tooltip_text = owner.titleaeWR
 
 func _on_mouse_entered():
 	var tooltip_scene = preload("res://Scenes/tooltip.tscn")

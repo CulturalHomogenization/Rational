@@ -8,26 +8,28 @@
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47it6"]
-size = Vector2(20, 8)
+size = Vector2(128, 128)
 
 [node name="Upgrade" type="Sprite2D"]
 texture = ExtResource("1_f5ow3")
 script = ExtResource("2_o0s84")
+upgrade_id = 1
 
 [node name="UpgradeArea" type="Area2D" parent="."]
 script = ExtResource("1_47it6")
-tooltip_text = "Upgrade: doule 0 7"
 tooltip_icon = ExtResource("1_f5ow3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeArea"]
 shape = SubResource("RectangleShape2D_gnjdq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Button" type="Sprite2D" parent="."]
+position = Vector2(0, 81)
+scale = Vector2(1, 0.25)
+texture = ExtResource("1_f5ow3")
 
-[node name="Upgrade Button" type="Area2D" parent="Sprite2D"]
+[node name="Upgrade Button" type="Area2D" parent="Button"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Upgrade Button"]
-position = Vector2(0, 14)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Upgrade Button"]
 shape = SubResource("RectangleShape2D_47it6")
 
 [connection signal="mouse_entered" from="UpgradeArea" to="UpgradeArea" method="_on_mouse_entered"]
