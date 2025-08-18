@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvr4k3y3ddyve"]
+
+[ext_resource type="Script" uid="uid://b3omsohm10isx" path="res://game_controller.gd" id="1_goscw"]
+[ext_resource type="PackedScene" uid="uid://bao4vfkn1220f" path="res://Scenes/kitchen.tscn" id="2_ppfu0"]
+
+[node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui")]
+script = ExtResource("1_goscw")
+world_3d = NodePath("Node3D")
+world_2d = NodePath("Node2D")
+gui = NodePath("Gui")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Kitchen" parent="Node3D" instance=ExtResource("2_ppfu0")]
+
+[node name="Gui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

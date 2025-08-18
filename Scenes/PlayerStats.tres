@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://cg32408gvhohw"]
+
+[ext_resource type="Script" uid="uid://c1h4gsab4uapl" path="res://Scenes/PlayerStats.gd" id="1_recb7"]
+
+[resource]
+script = ExtResource("1_recb7")
+growing_speed = 60
+cooking_speed = 5
+harvesting_speed = 20
+sowing_speed = 10
+yield_amount = 40
+upgrades = []
+metadata/_custom_type_script = "uid://c1h4gsab4uapl"
