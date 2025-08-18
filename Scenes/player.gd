@@ -9,6 +9,7 @@ const GRAVITY := 20.0
 @onready var interact_ray: RayCast3D = $InteractRay
 @onready var hold_marker: Marker3D = $hold
 
+var previous_scene_path: String = ""
 var picked_up_item : RigidBody3D
 
 func pick_object():
@@ -111,3 +112,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("interact"):
 			if check_if_in_wall(picked_up_item) == true:
 				remove_object()
+
+func _on_tech_station_interacted(body: Variant) -> void:
+	SceneManager.switch_to_upgrade_menu()

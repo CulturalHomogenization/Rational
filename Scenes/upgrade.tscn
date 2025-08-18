@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw6i3j06ujwui"]
+[gd_scene load_steps=7 format=3 uid="uid://dw6i3j06ujwui"]
 
 [ext_resource type="Script" uid="uid://vua2082yjhmk" path="res://Scenes/upgrade_area.gd" id="1_47it6"]
 [ext_resource type="Texture2D" uid="uid://6d6ffhtethkp" path="res://icon.svg" id="1_f5ow3"]
 [ext_resource type="Script" uid="uid://bxhwa605i2gee" path="res://Scenes/upgrade.gd" id="2_o0s84"]
+[ext_resource type="Script" uid="uid://dtev8wekiylfe" path="res://Scenes/upgrade_button.gd" id="4_d2ffm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnjdq"]
 size = Vector2(128, 128)
@@ -22,10 +23,27 @@ tooltip_icon = ExtResource("1_f5ow3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeArea"]
 shape = SubResource("RectangleShape2D_gnjdq")
 
+[node name="Label" type="Label" parent="."]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 5.0
+offset_right = -31.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "Upgrade"
+
 [node name="Button" type="Sprite2D" parent="."]
 position = Vector2(0, 81)
 scale = Vector2(1, 0.25)
 texture = ExtResource("1_f5ow3")
+script = ExtResource("4_d2ffm")
 
 [node name="Upgrade Button" type="Area2D" parent="Button"]
 
@@ -34,3 +52,7 @@ shape = SubResource("RectangleShape2D_47it6")
 
 [connection signal="mouse_entered" from="UpgradeArea" to="UpgradeArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UpgradeArea" to="UpgradeArea" method="_on_mouse_exited"]
+[connection signal="sprite_clicked" from="Button" to="." method="_on_button_sprite_clicked"]
+[connection signal="input_event" from="Button/Upgrade Button" to="Button" method="_on_upgrade_button_input_event"]
+[connection signal="mouse_entered" from="Button/Upgrade Button" to="Button" method="_on_upgrade_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button/Upgrade Button" to="Button" method="_on_upgrade_button_mouse_exited"]

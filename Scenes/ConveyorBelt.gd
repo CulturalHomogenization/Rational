@@ -3,6 +3,13 @@ extends Area3D
 @export var conveyor_direction := Vector3(1, 0, 0)
 @export var conveyor_speed := 5.0          # Target conveyor speed (units/s)
 @export var max_force := 100.0             # Maximum force magnitude to apply
+@onready var timer: Timer = $"../Timer"
+@onready var marker_3d: Marker3D = $"../Marker3D"
+const COAL = preload("res://Scenes/coal.tscn")
+const IRON = preload("res://Scenes/iron.tscn")
+func _ready() -> void:
+	print("hello")
+	timer.start()
 
 func _physics_process(delta):
 	for body in get_overlapping_bodies():
@@ -30,3 +37,12 @@ func _physics_process(delta):
 					drag_force = drag_force.normalized() * max_force
 				
 				body.apply_central_force(drag_force)
+
+
+func _on_timer_timeout() -> void:
+	timer.start(randi_range(2, 8))
+	var instance = COAL.instantiate()
+	instance.global_position = marker_3d.global_position
+	get_tree().get_root().add_child(instance)
+	print("timer")
+	

@@ -6,7 +6,7 @@ var tooltip_instance: PanelContainer
 @export var tooltip_text : String
 
 func _ready() -> void:
-	tooltip_text = owner.titleaeWR
+	tooltip_text = owner.title
 
 func _on_mouse_entered():
 	var tooltip_scene = preload("res://Scenes/tooltip.tscn")

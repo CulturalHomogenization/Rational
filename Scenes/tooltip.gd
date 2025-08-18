@@ -1,4 +1,3 @@
-# tooltip.gd
 extends PanelContainer
 
 @export var offset := Vector2(12, 12)
@@ -27,7 +26,4 @@ func _update_position() -> void:
 	var screen_size = get_viewport().get_visible_rect().size
 	var mouse_pos = get_global_mouse_position() + offset
 	var size_px = size
-	position = Vector2(
-		clamp(mouse_pos.x, 0, screen_size.x - size_px.x),
-		clamp(mouse_pos.y, 0, screen_size.y - size_px.y)
-	)
+	position = mouse_pos

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bao4vfkn1220f"]
+[gd_scene load_steps=10 format=3 uid="uid://bao4vfkn1220f"]
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
+[ext_resource type="PackedScene" uid="uid://dwkewfyblil05" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
 [ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
@@ -77,12 +78,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4)
 [node name="ConveyorBelt" parent="." instance=ExtResource("5_pb1w8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -4)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Refinery" parent="." instance=ExtResource("4_6pjjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60372, 1, -4)
+prompt_message = "Refine Materials"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-render_target_update_mode = 4
+[connection signal="interacted" from="TechStation" to="Player" method="_on_tech_station_interacted"]
