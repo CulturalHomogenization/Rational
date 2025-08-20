@@ -20,9 +20,9 @@ func _ready() -> void:
 	# Set initial line colors to dim
 	for child in get_children():
 		if child is Line2D:
-			child.default_color = Color(102, 80, 80, 0.569)
+			child.default_color = Color(80, 80, 0)
 
-func _on_button_sprite_clicked() -> void:
+func _on_pressed() -> void:
 	# Check if upgrade can be purchased
 	if not can_purchase_upgrade():
 		print("Cannot purchase upgrade: " + title)

@@ -1,29 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d145t385yqba6"]
+[gd_scene load_steps=3 format=3 uid="uid://d145t385yqba6"]
 
-[ext_resource type="Script" uid="uid://bkelg28ldv1r2" path="res://Scenes/upgrade_menu.gd" id="1_6gn5s"]
 [ext_resource type="PackedScene" uid="uid://dw6i3j06ujwui" path="res://Scenes/upgrade.tscn" id="1_ltp0x"]
 [ext_resource type="Script" uid="uid://dgo1bujf885d1" path="res://Scenes/camera_2d.gd" id="2_11363"]
 
 [node name="UpgradeMenu" type="Node2D"]
-script = ExtResource("1_6gn5s")
 
-<<<<<<< HEAD
-=======
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -73.0
-offset_top = 26.0
-offset_right = -33.0
-offset_bottom = 74.0
-grow_horizontal = 0
-text = "X"
-
->>>>>>> 2fd779f965ab69524b3b20f2551ceafc48201466
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_11363")
 
@@ -352,8 +333,4 @@ upgrade_id = 14
 position = Vector2(1974, -580)
 upgrade_id = 15
 
-<<<<<<< HEAD
-=======
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_close_pressed"]
->>>>>>> 2fd779f965ab69524b3b20f2551ceafc48201466
 [connection signal="ready" from="16" to="16" method="_on_ready"]

@@ -114,5 +114,4 @@ func _physics_process(delta):
 				remove_object()
 
 func _on_tech_station_interacted(body: Variant) -> void:
-	SceneManager.store_scene()
-	SceneManager.change_scene("res://Scenes/upgrade_menu.tscn")	# In your gameplay scene:
+	pass

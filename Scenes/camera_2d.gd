@@ -84,7 +84,3 @@ func reset_camera():
 func _draw():
 	if Engine.is_editor_hint() and show_bounds_in_editor:
 		draw_rect(camera_bounds, Color.RED, false, 2.0)
-
-
-func _on_button_pressed() -> void:
-	SceneManager.switch_to_game_scene()

@@ -1,5 +1,4 @@
-extends Resource
-class_name PlayerStats
+extends Node
 
 @export var growing_speed := 60
 @export var cooking_speed := 5

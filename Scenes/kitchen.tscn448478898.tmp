@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwkewfyblil05" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
 [ext_resource type="PackedScene" path="res://Scenes/item_collection.tscn" id="5_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
-[ext_resource type="PackedScene" uid="uid://bm35noykekl47" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
+[ext_resource type="PackedScene" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://d145t385yqba6" path="res://Scenes/upgrade_menu.tscn" id="7_cetdd"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
@@ -92,7 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51748, 1, -0.519311)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15546, 1, 3.01919)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -104,7 +103,7 @@ grow_vertical = 2
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="UpgradeMenu" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_cetdd")]
 
