@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bao4vfkn1220f"]
+[gd_scene load_steps=13 format=3 uid="uid://bao4vfkn1220f"]
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
 [ext_resource type="PackedScene" uid="uid://dwkewfyblil05" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
+[ext_resource type="PackedScene" uid="uid://cgdkkcmn6w585" path="res://Scenes/item_collection.tscn" id="5_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
+[ext_resource type="PackedScene" uid="uid://cmgabc3ct2ut7" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
+[ext_resource type="PackedScene" uid="uid://d145t385yqba6" path="res://Scenes/upgrade_menu.tscn" id="7_cetdd"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
 
@@ -79,7 +82,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -4)
 
 [node name="Refinery" parent="." instance=ExtResource("4_6pjjr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60372, 1, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.60372, 1, -3.99866)
 prompt_message = "Refine Materials"
+
+[node name="ItemCollection" parent="." instance=ExtResource("5_jbuf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51748, 1, -0.519311)
+
+[node name="Crafter" parent="." instance=ExtResource("6_jbuf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15546, 1, 3.01919)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="UpgradeMenu" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_cetdd")]
 
 [connection signal="interacted" from="TechStation" to="Player" method="_on_tech_station_interacted"]

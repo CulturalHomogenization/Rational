@@ -12,6 +12,7 @@ mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_lfcn5")
 continuous_cd = true
 script = ExtResource("1_lfcn5")
+id = "iron"
 prompt_message = "Pickup (Iron)"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

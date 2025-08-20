@@ -1,5 +1,6 @@
 extends Interactable
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@export var id : String
 
 func _on_interacted(body: Variant) -> void:
 	var key_name = ""

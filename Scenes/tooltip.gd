@@ -3,8 +3,8 @@ extends PanelContainer
 @export var offset := Vector2(12, 12)
 var tool_text := ""
 
-@onready var icon: TextureRect = $MarginContainer/HBoxContainer/TextureRect
-@onready var label: Label = $MarginContainer/HBoxContainer/Label
+@onready var icon: TextureRect = $MarginContainer/VBoxContainer/Title/TextureRect
+@onready var label: Label = $MarginContainer/VBoxContainer/Title/Label
 
 func _ready() -> void:
 	top_level = true

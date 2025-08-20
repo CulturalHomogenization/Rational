@@ -40,15 +40,25 @@ size_flags_vertical = 1
 text = "Upgrade"
 
 [node name="Button" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 81)
 scale = Vector2(1, 0.25)
 texture = ExtResource("1_f5ow3")
 script = ExtResource("4_d2ffm")
 
 [node name="Upgrade Button" type="Area2D" parent="Button"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Upgrade Button"]
+visible = false
 shape = SubResource("RectangleShape2D_47it6")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = -39.0
+offset_top = 65.0
+offset_right = 36.0
+offset_bottom = 96.0
+text = "Upgrade"
 
 [connection signal="mouse_entered" from="UpgradeArea" to="UpgradeArea" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UpgradeArea" to="UpgradeArea" method="_on_mouse_exited"]

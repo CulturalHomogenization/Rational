@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgdkkcmn6w585"]
+
+[ext_resource type="Script" uid="uid://dqadb743o81id" path="res://Scenes/item_collection.gd" id="1_275ln"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vsgtv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_275ln"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tunh8"]
+
+[node name="ItemCollection" type="StaticBody3D"]
+script = ExtResource("1_275ln")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vsgtv")
+skeleton = NodePath("")
+
+[node name="CollectionArea" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_275ln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tunh8")

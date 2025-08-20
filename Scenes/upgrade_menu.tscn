@@ -5,16 +5,6 @@
 
 [node name="UpgradeMenu" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 1061.0
-offset_top = 42.0
-offset_right = 1101.0
-offset_bottom = 90.0
-text = "X"
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_11363")
 
@@ -343,5 +333,4 @@ upgrade_id = 14
 position = Vector2(1974, -580)
 upgrade_id = 15
 
-[connection signal="pressed" from="CanvasLayer/Button" to="Camera2D" method="_on_button_pressed"]
 [connection signal="ready" from="16" to="16" method="_on_ready"]

@@ -13,6 +13,7 @@ inertia = Vector3(1, 1, 1)
 can_sleep = false
 continuous_cd = true
 script = ExtResource("1_x6f8n")
+id = "coal"
 prompt_message = "Pickup (Coal)"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
