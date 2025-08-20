@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 UpgradeData="*res://Scenes/UpgradeData.gd"
 Inventory="*res://Scenes/Inventory.gd"
-PlayerStats="*res://Scenes/PlayerStats.gd"
 SceneManager="*res://Scenes/SceneManager.gd"
 
 [editor_plugins]
