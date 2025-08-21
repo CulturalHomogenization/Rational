@@ -1,13 +1,13 @@
-extends Sprite2D
+extends Control
 class_name Upgrade
 @export var upgrade_id : int
-@onready var upgrade_area: Area2D = $UpgradeArea
 @export var title : String
 @export var description : String
 @export var dependencies : Array
 @export var buffs : Array
 @export var costs : Array
 @export var is_purchased : bool = false
+@onready var upgrade_area: TextureRect = $Panel/VBoxContainer/MainIcon
 
 func _ready() -> void:
 	title = UpgradeData.upgrades[upgrade_id]["title"]
@@ -22,20 +22,6 @@ func _ready() -> void:
 		if child is Line2D:
 			child.default_color = Color(80, 80, 0)
 
-func _on_pressed() -> void:
-	# Check if upgrade can be purchased
-	if not can_purchase_upgrade():
-		print("Cannot purchase upgrade: " + title)
-		return
-	
-	# Purchase the upgrade
-	purchase_upgrade()
-	
-	# Update visual feedback - brighten the lines
-	for child in get_children():
-		if child is Line2D:
-			child.default_color = Color(255, 255, 255)
-			print("Upgrade purchased: " + title)
 
 func can_purchase_upgrade() -> bool:
 	# Check if already purchased
@@ -81,3 +67,19 @@ func apply_upgrade_buffs() -> void:
 	print("Buffs applied for upgrade: " + title)
 	for buff in buffs:
 		print("  - " + buff["type"] + ": " + str(buff["amount"]))
+
+
+func _on_upgrade_iron_pressed() -> void:
+# Check if upgrade can be purchased
+	if not can_purchase_upgrade():
+		print("Cannot purchase upgrade: " + title)
+		return
+	
+	# Purchase the upgrade
+	purchase_upgrade()
+	
+	# Update visual feedback - brighten the lines
+	for child in get_children():
+		if child is Line2D:
+			child.default_color = Color(255, 255, 255)
+			print("Upgrade purchased: " + title)

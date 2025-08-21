@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw6i3j06ujwui"]
+[gd_scene load_steps=8 format=3 uid="uid://dw6i3j06ujwui"]
 
 [ext_resource type="Texture2D" uid="uid://bbjd8cm7fcp8h" path="res://assets/Placeholders/models/textures/Dry Gouache.png" id="2_d2ffm"]
 [ext_resource type="Script" uid="uid://bxhwa605i2gee" path="res://Scenes/upgrade.gd" id="2_o0s84"]
 [ext_resource type="Texture2D" uid="uid://c8yjkkdt12u50" path="res://assets/Upgrade Icons/Plants1-15.webp" id="3_uudjn"]
+[ext_resource type="Script" uid="uid://vua2082yjhmk" path="res://Scenes/upgrade_area.gd" id="4_d2ffm"]
+[ext_resource type="Script" uid="uid://dtev8wekiylfe" path="res://Scenes/upgrade_button.gd" id="5_uudjn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxtxw"]
 texture = ExtResource("2_d2ffm")
@@ -14,21 +16,29 @@ region = Rect2(20, 50, 280, 280)
 
 [node name="Upgrade" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 0.015
+offset_right = -17.28
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource("2_o0s84")
 upgrade_id = 1
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(90, 90)
-layout_mode = 0
-offset_right = 90.0
-offset_bottom = 90.0
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_nxtxw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.263
+anchor_right = 0.263
+offset_left = -31.56
+offset_right = 88.44
+offset_bottom = 155.0
+alignment = 1
 
 [node name="MainIcon" type="TextureRect" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 90)
@@ -36,8 +46,18 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_2j2lw")
 expand_mode = 5
 stretch_mode = 4
+script = ExtResource("4_d2ffm")
 
-[node name="UpgradeIron" type="Button" parent="Panel/VBoxContainer"]
+[node name="Upgrade" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 text = "Upgrade"
 expand_icon = true
+script = ExtResource("5_uudjn")
+
+[connection signal="mouse_entered" from="Panel/VBoxContainer/MainIcon" to="Panel/VBoxContainer/MainIcon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/VBoxContainer/MainIcon" to="Panel/VBoxContainer/MainIcon" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/Upgrade" to="Panel/VBoxContainer/Upgrade" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/VBoxContainer/Upgrade" to="Panel/VBoxContainer/Upgrade" method="_on_mouse_exited"]
+[connection signal="pressed" from="Panel/VBoxContainer/Upgrade" to="." method="_on_upgrade_iron_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Upgrade" to="Panel/VBoxContainer/Upgrade" method="_on_pressed"]
