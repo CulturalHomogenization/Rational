@@ -11,8 +11,15 @@ script = ExtResource("1_6gn5s")
 position = Vector2(-200, -29)
 script = ExtResource("2_11363")
 
+[node name="16" parent="." instance=ExtResource("1_ltp0x")]
+offset_left = -399.0
+offset_top = -86.0
+offset_right = -399.0
+offset_bottom = -86.0
+
 [node name="Upgrade" parent="." instance=ExtResource("1_ltp0x")]
-offset_left = -300.0
-offset_top = -92.0
-offset_right = -300.0
-offset_bottom = -92.0
+offset_left = 339.72
+offset_top = 289.0
+offset_right = 339.72
+offset_bottom = 289.0
+upgrade_id = 17

@@ -1,69 +1,274 @@
 extends Node
 
-var upgrades := {
-	1: {"title": "Advanced Metallurgy", "description": "New alloys for stronger, lighter mechanical parts.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Plate", "amount": 6}, {"item": "Copper Coil", "amount": 4}]},
-	2: {"title": "Steam Flow Dynamics", "description": "Mastering steam pressure and flow for stable power.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Pipe", "amount": 7}, {"item": "Mitre Gear", "amount": 5}]},
-	3: {"title": "Engine Efficiency", "description": "Techniques to boost steam engine power and lifespan.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Gear", "amount": 5}, {"item": "Copper Valve", "amount": 4}]},
-	4: {"title": "Precision Gearworks", "description": "Fine-tuned gears and cogs for exact control.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Gear", "amount": 6}, {"item": "Copper Pipe", "amount": 3}]},
-	5: {"title": "Manual Control Systems", "description": "Mechanical systems optimized for hand operation.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Lever", "amount": 4}, {"item": "Mitre Gear", "amount": 3}]},
-	6: {"title": "Hydraulic Mechanics", "description": "Fluid power for precise mechanical movement.", "dependencies": [], "buffs": [], "costs": [{"item": "Copper Pipe", "amount": 8}, {"item": "Iron Plate", "amount": 5}]},
-	7: {"title": "High-Pressure Boilers", "description": "Managing boilers under extreme steam pressure.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Plate", "amount": 7}, {"item": "Coal Furnace", "amount": 6}]},
-	8: {"title": "Steam-Powered Optics", "description": "Enhancing manual targeting with steam-driven parts.", "dependencies": [], "buffs": [], "costs": [{"item": "Copper Coil", "amount": 6}, {"item": "Iron Gear", "amount": 4}]},
-	9: {"title": "Ballistics Optimization", "description": "Improving projectile design for accuracy and power.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Gear", "amount": 5}, {"item": "Copper Pipe", "amount": 3}]},
-	10: {"title": "Durable Mechanical Design", "description": "Building rugged, wear-resistant machinery.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Rivet", "amount": 6}, {"item": "Copper Panel", "amount": 4}]},
-	11: {"title": "Material Reinforcement", "description": "Strengthening parts to resist stress and fatigue.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Plate", "amount": 5}, {"item": "Copper Valve", "amount": 5}]},
-	12: {"title": "Steam Heat Regulation", "description": "Evenly distributing heat with steam systems.", "dependencies": [], "buffs": [], "costs": [{"item": "Copper Pipe", "amount": 6}, {"item": "Iron Plate", "amount": 4}]},
-	13: {"title": "Condensation Control", "description": "Managing steam condensation for efficiency.", "dependencies": [], "buffs": [], "costs": [{"item": "Copper Valve", "amount": 5}, {"item": "Iron Plate", "amount": 3}]},
-	14: {"title": "Pressure Regulation Systems", "description": "Manual control of steam pressure and flow.", "dependencies": [], "buffs": [], "costs": [{"item": "Copper Valve", "amount": 6}, {"item": "Mitre Gear", "amount": 5}]},
-	15: {"title": "Integrated Mechanical Systems", "description": "Combining parts for smooth manual operation.", "dependencies": [], "buffs": [], "costs": [{"item": "Iron Gear", "amount": 6}, {"item": "Copper Coil", "amount": 4}]},
-	16: {"title": "Copper-Enriched Soil Mix", "description": "Copper additives boost soil strength and root health.", "dependencies": [1], "buffs": [{"amount": 10, "type": "yield"}], "costs": [{"item": "Copper Pipe", "amount": 5}]},
-	17: {"title": "Alloy Reinforced Plant Frames", "description": "Brass frames support plants, improving growth stability.", "dependencies": [1], "buffs": [{"amount": 8, "type": "growth speed"}], "costs": [{"item": "Iron Gear", "amount": 4}, {"item": "Copper Coil", "amount": 2}]},
-	18: {"title": "Mineral Filtration System", "description": "Filters water with minerals to enrich soil nutrients.", "dependencies": [2], "buffs": [{"amount": 12, "type": "yield"}], "costs": [{"item": "Iron Pipe", "amount": 6}, {"item": "Mitre Gear", "amount": 3}]},
-	19: {"title": "Coal-Powered Radiant Warmers", "description": "Provides steady radiant heat to extend growing periods.", "dependencies": [3], "buffs": [{"amount": 14, "type": "growth speed"}], "costs": [{"item": "Copper Pipe", "amount": 8}, {"item": "Coal Furnace", "amount": 1}]},
-	20: {"title": "Precision Valve Controls", "description": "Hand-operated valves deliver water exactly where needed.", "dependencies": [4, 17], "buffs": [{"amount": 10, "type": "growth speed"}], "costs": [{"item": "Copper Valve", "amount": 3}, {"item": "Iron Lever", "amount": 2}]},
-	21: {"title": "Steam-Driven Soil Aerators", "description": "Cranked aerators improve soil oxygen levels manually.", "dependencies": [4, 18, 19], "buffs": [{"amount": 12, "type": "growth speed"}], "costs": [{"item": "Iron Gear", "amount": 5}, {"item": "Copper Pipe", "amount": 4}]},
-	22: {"title": "Brass-Lined Light Reflectors", "description": "Directs sunlight deep into crop canopies for better yield.", "dependencies": [5, 16], "buffs": [{"amount": 15, "type": "yield"}], "costs": [{"item": "Copper Panel", "amount": 3}, {"item": "Iron Rivet", "amount": 6}]},
-	23: {"title": "Hand-Cranked Pollination Fans", "description": "Manually operated fans improve pollen distribution.", "dependencies": [5, 16, 20], "buffs": [{"amount": 12, "type": "yield"}], "costs": [{"item": "Iron Gear", "amount": 4}, {"item": "Copper Coil", "amount": 3}]},
-	24: {"title": "Copper Ion Soil Treatment", "description": "Releases trace copper ions for stronger plant health.", "dependencies": [5, 21], "buffs": [{"amount": 18, "type": "yield"}], "costs": [{"item": "Copper Pipe", "amount": 6}, {"item": "Iron Plate", "amount": 4}]},
-	25: {"title": "Steam-Infused Nutrient Feeders", "description": "Pipes distribute nutrients warmed by steam to roots.", "dependencies": [6, 21], "buffs": [{"amount": 15, "type": "growth speed"}], "costs": [{"item": "Iron Pipe", "amount": 8}, {"item": "Copper Coil", "amount": 3}]},
-	26: {"title": "Condensation Collection Trays", "description": "Collects water vapor for recycling into soil moisture.", "dependencies": [6, 22], "buffs": [{"amount": 12, "type": "growth speed"}], "costs": [{"item": "Mitre Gear", "amount": 5}, {"item": "Iron Plate", "amount": 2}]},
-	27: {"title": "Thermal Mass Storage Blocks", "description": "Absorbs heat during day, releasing it at night to protect plants.", "dependencies": [7, 22], "buffs": [{"amount": 12, "type": "growth speed"}], "costs": [{"item": "Copper Coil", "amount": 4}, {"item": "Iron Plate", "amount": 3}]},
-	28: {"title": "Steam-Heated Root Warmers", "description": "Pipes keep roots warm during cold conditions.", "dependencies": [7, 23, 20], "buffs": [{"amount": 20, "type": "growth speed"}], "costs": [{"item": "Iron Pipe", "amount": 7}, {"item": "Coal Furnace", "amount": 2}]},
-	29: {"title": "Coal-Warmed Fog Emitters", "description": "Emits warm mist to maintain ideal humidity levels.", "dependencies": [7, 24, 25], "buffs": [{"amount": 16, "type": "growth speed"}], "costs": [{"item": "Copper Valve", "amount": 5}, {"item": "Coal Furnace", "amount": 3}]},
-	30: {"title": "Manual Seed Sowing Frames", "description": "Cranked seed planters speed sowing without automation.", "dependencies": [8, 23], "buffs": [{"amount": -15, "type": "sowing time"}], "costs": [{"item": "Iron Gear", "amount": 6}, {"item": "Copper Pipe", "amount": 4}]},
-	31: {"title": "Brass-Coiled Moisture Catcher", "description": "Draws humidity from air to water plants naturally.", "dependencies": [8, 28], "buffs": [{"amount": 15, "type": "growth speed"}], "costs": [{"item": "Copper Coil", "amount": 5}, {"item": "Iron Pipe", "amount": 5}]},
-	32: {"title": "Precision Soil Gauges", "description": "Brass dials provide soil health data for manual care.", "dependencies": [9, 29], "buffs": [{"amount": 12, "type": "yield"}], "costs": [{"item": "Copper Valve", "amount": 3}, {"item": "Iron Plate", "amount": 6}]},
-	33: {"title": "Pressure-Regulated Fertilizer Injector", "description": "Manual pumps control nutrient delivery pressure.", "dependencies": [9, 29], "buffs": [{"amount": 18, "type": "growth speed"}], "costs": [{"item": "Copper Valve", "amount": 4}, {"item": "Iron Gear", "amount": 4}]},
-	34: {"title": "Steam-Tuned Soil Panels", "description": "Steam-heated plates prevent soil chill and frost damage.", "dependencies": [10, 26, 27], "buffs": [{"amount": 20, "type": "growth speed"}], "costs": [{"item": "Copper Panel", "amount": 5}, {"item": "Iron Pipe", "amount": 5}]},
-	35: {"title": "Copper Mesh Growth Frames", "description": "Supports plants and improves airflow for better growth.", "dependencies": [10, 27, 30], "buffs": [{"amount": 16, "type": "growth speed"}], "costs": [{"item": "Mitre Gear", "amount": 6}, {"item": "Iron Rivet", "amount": 3}]},
-	36: {"title": "Heat-Reflective Canopies", "description": "Brass fabric shades block excess heat to prevent wilting.", "dependencies": [11, 34], "buffs": [{"amount": 18, "type": "yield"}], "costs": [{"item": "Copper Panel", "amount": 7}, {"item": "Iron Gear", "amount": 4}]},
-	37: {"title": "Manual Irrigation Pumps", "description": "Hand-powered pumps deliver water steadily to crops.", "dependencies": [11, 35], "buffs": [{"amount": 15, "type": "growth speed"}], "costs": [{"item": "Iron Lever", "amount": 4}, {"item": "Copper Pipe", "amount": 5}]},
-	38: {"title": "Steam-Operated Shade Canopy", "description": "Pulley-driven shades adjust light exposure manually.", "dependencies": [12, 31, 32], "buffs": [{"amount": 18, "type": "yield"}], "costs": [{"item": "Iron Gear", "amount": 6}, {"item": "Copper Valve", "amount": 5}]},
-	39: {"title": "Coal-Fired Nutrient Distiller", "description": "Produces nutrient slurry for richer soil feeding.", "dependencies": [12, 32, 33], "buffs": [{"amount": 20, "type": "yield"}], "costs": [{"item": "Coal Furnace", "amount": 4}, {"item": "Copper Pipe", "amount": 6}]},
-	40: {"title": "Brass-Lined Nutrient Channels", "description": "Steam-heated brass pipes deliver enriched nutrients deep to plant roots, boosting vitality.", "dependencies": [13, 36, 37, 38], "buffs": [{"amount": 25, "type": "growth speed"}], "costs": [{"item": "Copper Coil", "amount": 8}, {"item": "Iron Pipe", "amount": 4}]},
-	41: {"title": "Thermal Regulated Soil Covers", "description": "Insulated soil covers with embedded steam coils maintain stable warmth for continuous root growth.", "dependencies": [13, 40,], "buffs": [{"amount": 20, "type": "growth speed"}], "costs": [{"item": "Mitre Gear", "amount": 6}, {"item": "Iron Plate", "amount": 5}]},
-	42: {"title": "Copper-Infused Soil Panels", "description": "Copper alloy panels regulate soil temperature and emit subtle electromagnetic pulses to enhance plant health.", "dependencies": [14,39], "buffs": [{"amount": 25, "type": "growth speed"}], "costs": [{"item": "Copper Panel", "amount": 7}, {"item": "Iron Plate", "amount": 6}]},
-	43: {"title": "Steam-Humidified Air Chambers", "description": "Enclosed chambers circulate mineral-rich, superheated steam to optimize humidity and accelerate hydration.", "dependencies": [14,39], "buffs": [{"amount": 30, "type": "growth speed"}], "costs": [{"item": "Copper Pipe", "amount": 8}, {"item": "Coal Furnace", "amount": 4}]},
-	44: {"title": "Coal-Fired Radiant Warmers", "description": "Powerful coal-fueled radiant heaters supply consistent heat, drastically extending growing seasons.", "dependencies": [15, 41, 40], "buffs": [{"amount": 40, "type": "growth speed"}], "costs": [{"item": "Coal Furnace", "amount": 9}, {"item": "Iron Plate", "amount": 5}]},
-	45: {"title": "Pneumatic Hydraulic Irrigation", "description": "Advanced steam-powered pneumatic pumps deliver water with precise control and high efficiency.", "dependencies": [15, 43, 42], "buffs": [{"amount": 30, "type": "growth speed"}], "costs": [{"item": "Iron Gear", "amount": 8}, {"item": "Copper Valve", "amount": 5}]},
-	46: {"title": "Reinforced Steel Plating", "description": "Stronger hull plating improves tank’s damage resistance.", "dependencies": [1], "buffs": [{"amount": 5, "type": "armor"}]},
-	47: {"title": "High-Pressure Steam Engine", "description": "More powerful engine boosts speed and mobility.", "dependencies": [3], "buffs": [{"amount": 7, "type": "speed"}]},
-	48: {"title": "Advanced Gear Transmission", "description": "Improved gear systems smooth out handling and speed.", "dependencies": [4], "buffs": [{"amount": 5, "type": "speed"}]},
-	49: {"title": "Enhanced Cooling Systems", "description": "Steam cooling prevents overheating under heavy fire.", "dependencies": [7], "buffs": [{"amount": 5, "type": "armor"}]},
-	50: {"title": "Precision Targeting Optics", "description": "Brass optics sharpen manual aiming and firing accuracy.", "dependencies": [8], "buffs": [{"amount": 7, "type": "accuracy"}]},
-	51: {"title": "Boiler Pressure Stabilizers", "description": "Stabilizes boiler pressure for reliable engine output.", "dependencies": [14], "buffs": [{"amount": 6, "type": "speed"}]},
-	52: {"title": "Reinforced Suspension", "description": "Strong suspension improves off-road stability and handling.", "dependencies": [10], "buffs": [{"amount": 5, "type": "speed"}]},
-	53: {"title": "Hydraulic Turret Mounts", "description": "Manual hydraulic mounts speed up turret rotation.", "dependencies": [6], "buffs": [{"amount": 6, "type": "turret rotation speed"}]},
-	54: {"title": "Coal-Fired Auxiliary Boiler", "description": "Burst steam power boosts engine output temporarily.", "dependencies": [7], "buffs": [{"amount": 8, "type": "speed"}]},
-	55: {"title": "Brass-Armored Tracks", "description": "Durable tracks resist damage and improve tank durability.", "dependencies": [10], "buffs": [{"amount": 6, "type": "armor"}]},
-	56: {"title": "Smoke Screen Generators", "description": "Creates dense smoke clouds for evasive maneuvers.", "dependencies": [12], "buffs": [{"amount": 5, "type": "accuracy"}]},
-	57: {"title": "Manual Ammunition Loader", "description": "Mechanical loader speeds reload without automation.", "dependencies": [5], "buffs": [{"amount": -10, "type": "reload time"}]},
-	58: {"title": "Pressure-Regulated Fuel Lines", "description": "Maintains steady fuel flow for consistent engine power.", "dependencies": [14], "buffs": [{"amount": 6, "type": "speed"}]},
-	59: {"title": "Reinforced Battle Plating", "description": "Additional armor layers for front-line durability.", "dependencies": [10], "buffs": [{"amount": 10, "type": "armor"}]},
-	60: {"title": "Steam-Cooled Gun Barrels", "description": "Keeps barrels cool for sustained firing rate.", "dependencies": [4], "buffs": [{"amount": 8, "type": "weapon damage"}]},
-	61: {"title": "Mechanical Targeting Computer", "description": "Gear-driven computing aids manual targeting.", "dependencies": [8], "buffs": [{"amount": 7, "type": "accuracy"}]},
-	62: {"title": "Reinforced Boiler Chambers", "description": "Extra protection for boilers against combat damage.", "dependencies": [12], "buffs": [{"amount": 5, "type": "armor"}]},
-	63: {"title": "Turbocharged Steam Exhaust", "description": "Optimized exhaust increases engine speed and power.", "dependencies": [9], "buffs": [{"amount": 8, "type": "speed"}]},
-	64: {"title": "Armored Driver’s Cockpit", "description": "Reinforced plating protects driver from incoming fire.", "dependencies": [10], "buffs": [{"amount": 6, "type": "armor"}]},
-	65: {"title": "Juggernaut Siege Systems", "description": "Integrated war tech combines power, speed, and protection.", "dependencies": [15], "buffs": [{"amount": 25, "type": "armor"}, {"amount": 20, "type": "weapon damage"}, {"amount": 15, "type": "speed"}]}
+var upgrades = {
+	16: {
+		"Upgrade Name": "Brass-Infused Soil Crucibles",
+		"Description": "Soil trays laced with brass filings to fortify rootbeds.",
+		"Dependencies": 1,
+		"Buff Type": "Yield",
+		"Buff Amount": 10,
+		"Cost": {"Copper Pipe": 3, "Iron Plate": 2},
+		"Signature Crafted Item": "Soil Crucible Array"
+	},
+	17: {
+		"Upgrade Name": "Riveted Growth Lattices",
+		"Description": "Rigid brass lattices coax plants upright, channeling vitality.",
+		"Dependencies": 1,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 8,
+		"Cost": {"Iron Gear": 4, "Copper Coil": 2},
+		"Signature Crafted Item": "Lattice Gearframe"
+	},
+	18: {
+		"Upgrade Name": "Mineral-Tuned Water Condensers",
+		"Description": "Filtering condensers enrich irrigation with trace metals.",
+		"Dependencies": 2,
+		"Buff Type": "Yield",
+		"Buff Amount": 12,
+		"Cost": {"Iron Pipe": 6, "Mitre Gear": 3},
+		"Signature Crafted Item": "Water Condenser Unit"
+	},
+	19: {
+		"Upgrade Name": "Steam Seed Incubators",
+		"Description": "Steam chambers accelerate sprouting with controlled heat.",
+		"Dependencies": 2,
+		"Buff Type": "Sowing Time",
+		"Buff Amount": -10,
+		"Cost": {"Copper Coil": 4, "Iron Plate": 3},
+		"Signature Crafted Item": "Incubation Boiler"
+	},
+	20: {
+		"Upgrade Name": "Coal-Fired Radiant Braziers",
+		"Description": "Furnaces radiate constant warmth into crop rows.",
+		"Dependencies": 3,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 14,
+		"Cost": {"Copper Pipe": 8, "Coal Furnace": 1},
+		"Signature Crafted Item": "Radiant Heat Array"
+	},
+	21: {
+		"Upgrade Name": "Gear-Clamped Harvest Shears",
+		"Description": "Mechanized shears reduce harvest time with precision.",
+		"Dependencies": 3,
+		"Buff Type": "Harvesting Time",
+		"Buff Amount": -12,
+		"Cost": {"Iron Gear": 5, "Copper Pipe": 4},
+		"Signature Crafted Item": "Harvest Shear Engine"
+	},
+	22: {
+		"Upgrade Name": "Pressure-Dial Water Regulators",
+		"Description": "Dials fine-tune irrigation with steam-driven precision.",
+		"Dependencies": 4,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 10,
+		"Cost": {"Copper Valve": 3, "Iron Lever": 2},
+		"Signature Crafted Item": "Irrigation Regulator"
+	},
+	23: {
+		"Upgrade Name": "Steam-Powered Soil Augers",
+		"Description": "Pneumatic augers churn soil, pumping in fresh oxygen.",
+		"Dependencies": 4,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 12,
+		"Cost": {"Iron Gear": 5, "Copper Pipe": 4},
+		"Signature Crafted Item": "Soil Auger Core"
+	},
+	24: {
+		"Upgrade Name": "Copper-Plated Sun Diverters",
+		"Description": "Panels redirect sunlight deep into foliage efficiently.",
+		"Dependencies": 5,
+		"Buff Type": "Yield",
+		"Buff Amount": 15,
+		"Cost": {"Copper Panel": 3, "Iron Rivet": 6},
+		"Signature Crafted Item": "Sun Diverter Assembly"
+	},
+	25: {
+		"Upgrade Name": "Oscillating Pollen Turbines",
+		"Description": "Rotating turbines distribute pollen evenly across crops.",
+		"Dependencies": 5,
+		"Buff Type": "Yield",
+		"Buff Amount": 12,
+		"Cost": {"Iron Gear": 4, "Copper Coil": 3},
+		"Signature Crafted Item": "Pollination Turbine"
+	},
+	26: {
+		"Upgrade Name": "Seed Conveyor Turbine",
+		"Description": "Pneumatic turbine spreads seeds across soil beds.",
+		"Dependencies": 6,
+		"Buff Type": "Sowing Time",
+		"Buff Amount": -20,
+		"Cost": {"Copper Pipe": 6, "Iron Gear": 5},
+		"Signature Crafted Item": "Seed Conveyor Core"
+	},
+	27: {
+		"Upgrade Name": "Steam-Driven Root Infusers",
+		"Description": "Pipes circulate enriched steam directly to roots.",
+		"Dependencies": 6,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 15,
+		"Cost": {"Iron Pipe": 8, "Copper Coil": 3},
+		"Signature Crafted Item": "Root Infuser Engine"
+	},
+	28: {
+		"Upgrade Name": "Condensate Reclaim Funnels",
+		"Description": "Funnels capture steam to recycle as irrigation water.",
+		"Dependencies": 6,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 12,
+		"Cost": {"Mitre Gear": 5, "Iron Plate": 2},
+		"Signature Crafted Item": "Condensation Funnel Unit"
+	},
+	29: {
+		"Upgrade Name": "Boiler-Piped Root Jackets",
+		"Description": "Steam jackets wrap around soil beds, warming roots steadily.",
+		"Dependencies": 7,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 20,
+		"Cost": {"Iron Pipe": 7, "Coal Furnace": 2},
+		"Signature Crafted Item": "Root Jacket Assembly"
+	},
+	30: {
+		"Upgrade Name": "Fog-Driven Moisture Manifolds",
+		"Description": "Coal-heated mist saturates crops with humid vapors.",
+		"Dependencies": 7,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 16,
+		"Cost": {"Copper Valve": 5, "Coal Furnace": 3},
+		"Signature Crafted Item": "Moisture Distribution Manifold"
+	},
+	31: {
+		"Upgrade Name": "Gear-Ratcheted Seeder Frames",
+		"Description": "Ratchet assemblies distribute seeds efficiently.",
+		"Dependencies": 8,
+		"Buff Type": "Sowing Time",
+		"Buff Amount": -15,
+		"Cost": {"Iron Gear": 6, "Copper Pipe": 4},
+		"Signature Crafted Item": "Seeder Frame Gearwork"
+	},
+	32: {
+		"Upgrade Name": "Coil-Spun Dew Harvesters",
+		"Description": "Copper coils condense atmospheric moisture for irrigation.",
+		"Dependencies": 8,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 15,
+		"Cost": {"Copper Coil": 5, "Iron Pipe": 5},
+		"Signature Crafted Item": "Dew Collector Unit"
+	},
+	33: {
+		"Upgrade Name": "Soil-Gauge Chronometers",
+		"Description": "Meters reveal soil conditions in real time.",
+		"Dependencies": 9,
+		"Buff Type": "Yield",
+		"Buff Amount": 12,
+		"Cost": {"Copper Valve": 3, "Iron Plate": 6},
+		"Signature Crafted Item": "Soil Monitoring Instrument"
+	},
+	34: {
+		"Upgrade Name": "Piston-Driven Fertilizer Pumps",
+		"Description": "Pump assemblies force nutrients deep into roots.",
+		"Dependencies": 9,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 18,
+		"Cost": {"Copper Valve": 4, "Iron Gear": 4},
+		"Signature Crafted Item": "Fertilizer Pump Engine"
+	},
+	35: {
+		"Upgrade Name": "Steam-Gridded Soil Plates",
+		"Description": "Heated plates prevent frost across entire soil beds.",
+		"Dependencies": 10,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 20,
+		"Cost": {"Copper Panel": 5, "Iron Pipe": 5},
+		"Signature Crafted Item": "Gridded Soil Plate Array"
+	},
+	36: {
+		"Upgrade Name": "Wire-Caged Airflow Trellises",
+		"Description": "Mesh cages channel air currents to crops efficiently.",
+		"Dependencies": 10,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 16,
+		"Cost": {"Mitre Gear": 6, "Iron Rivet": 3},
+		"Signature Crafted Item": "Airflow Trellis Unit"
+	},
+	37: {
+		"Upgrade Name": "Reflective Brass Canopies",
+		"Description": "Adjustable brass awnings shield crops from heat.",
+		"Dependencies": 11,
+		"Buff Type": "Yield",
+		"Buff Amount": 18,
+		"Cost": {"Copper Panel": 7, "Iron Gear": 4},
+		"Signature Crafted Item": "Canopy Frame Assembly"
+	},
+	38: {
+		"Upgrade Name": "Lever-Pumped Water Towers",
+		"Description": "Pneumatic-assisted towers steadily deliver irrigation.",
+		"Dependencies": 11,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 15,
+		"Cost": {"Iron Lever": 4, "Copper Pipe": 5},
+		"Signature Crafted Item": "Water Tower Engine"
+	},
+	39: {
+		"Upgrade Name": "Pulley-Drawn Shade Mechanisms",
+		"Description": "Automated pulleys adjust shading on demand.",
+		"Dependencies": 12,
+		"Buff Type": "Yield",
+		"Buff Amount": 18,
+		"Cost": {"Iron Gear": 6, "Copper Valve": 5},
+		"Signature Crafted Item": "Shade Adjustment Engine"
+	},
+	40: {
+		"Upgrade Name": "Auto-Sowing Apparatus",
+		"Description": "Fully automated seeding rig, no manual input needed.",
+		"Dependencies": 12,
+		"Buff Type": "Auto Sowing",
+		"Buff Amount": 0,
+		"Cost": {"Iron Gear": 8, "Copper Pipe": 6, "Coal Furnace": 1},
+		"Signature Crafted Item": "Automated Seeder Rig"
+	},
+	41: {
+		"Upgrade Name": "Slag-Fired Nutrient Distillers",
+		"Description": "Distillers brew nutrient-rich slurry for irrigation.",
+		"Dependencies": 12,
+		"Buff Type": "Yield",
+		"Buff Amount": 20,
+		"Cost": {"Coal Furnace": 4, "Copper Pipe": 6},
+		"Signature Crafted Item": "Slurry Distiller Core"
+	},
+	42: {
+		"Upgrade Name": "Steam-Tubed Nutrient Conduits",
+		"Description": "Steam-laced conduits deliver enriched water to roots.",
+		"Dependencies": 13,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 25,
+		"Cost": {"Copper Coil": 8, "Iron Pipe": 4},
+		"Signature Crafted Item": "Nutrient Conduit Engine"
+	},
+	43: {
+		"Upgrade Name": "Auto-Harvest Engine",
+		"Description": "Mechanized reaper reduces harvest labor.",
+		"Dependencies": 13,
+		"Buff Type": "Auto Harvesting",
+		"Buff Amount": 0,
+		"Cost": {"Iron Plate": 10, "Copper Valve": 6, "Coal Furnace": 1},
+		"Signature Crafted Item": "Harvest Reaper Engine"
+	},
+	44: {
+		"Upgrade Name": "Vapor-Sealed Growth Chambers",
+		"Description": "Brass domes cycle steam and moisture for rapid growth.",
+		"Dependencies": 14,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 30,
+		"Cost": {"Copper Pipe": 8, "Coal Furnace": 4},
+		"Signature Crafted Item": "Growth Chamber Core"
+	},
+	45: {
+		"Upgrade Name": "Furnace-Driven Thermal Casings",
+		"Description": "Massive furnaces radiate warmth for year-round yield.",
+		"Dependencies": 15,
+		"Buff Type": "Growth Speed",
+		"Buff Amount": 40,
+		"Cost": {"Coal Furnace": 9, "Iron Plate": 5},
+		"Signature Crafted Item": "Thermal Casing Assembly"
+	}
 }

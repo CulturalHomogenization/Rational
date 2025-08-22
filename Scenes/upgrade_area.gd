@@ -1,18 +1,20 @@
-extends TextureRect
+extends Control
 
 @export var tooltip_icon: Texture2D
 
 var tooltip_instance: PanelContainer
-@export var title : String
+
+var upgrade_id : int
+@onready var upgrade: Upgrade = $"../../.."
 
 func _ready() -> void:
-	title = owner.title
+	upgrade_id = upgrade.upgrade_id
 
 func _on_mouse_entered():
 	var tooltip_scene = preload("res://Scenes/tooltip.tscn")
 	tooltip_instance = tooltip_scene.instantiate()
 	get_tree().root.add_child(tooltip_instance) # Add to root so it overlays everything
-	tooltip_instance.setup(title, tooltip_icon)
+	tooltip_instance.setup_from_id(upgrade_id)
 
 func _on_mouse_exited():
 	if tooltip_instance:

@@ -22,7 +22,7 @@ expand_margin_bottom = 3.0
 [node name="ToolTip" type="PanelContainer"]
 top_level = true
 z_index = 8
-custom_minimum_size = Vector2(20, 50)
+custom_minimum_size = Vector2(80, 50)
 offset_right = 93.0
 offset_bottom = 50.0
 scale = Vector2(1.00235, 1)
@@ -53,7 +53,7 @@ texture = ExtResource("1_ogi1g")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Title"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Upgrade Title"
 autowrap_mode = 2
@@ -62,16 +62,16 @@ autowrap_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Description"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel tempor est, quis hendrerit purus."
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Requirements" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Requirements"]
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 text = "Requires :
 17 diamonds
@@ -79,15 +79,15 @@ text = "Requires :
 23 slices of pie"
 autowrap_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Research" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Research"]
 layout_mode = 2
 texture = ExtResource("1_ogi1g")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Research"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Research Level 3"

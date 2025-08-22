@@ -7,16 +7,9 @@ class_name Upgrade
 @export var buffs : Array
 @export var costs : Array
 @export var is_purchased : bool = false
-@onready var upgrade_area: TextureRect = $Panel/VBoxContainer/MainIcon
+@onready var upgrade_area: Container = $Panel/VBoxContainer/MainIcon
 
 func _ready() -> void:
-	title = UpgradeData.upgrades[upgrade_id]["title"]
-	description = UpgradeData.upgrades[upgrade_id]["description"]
-	dependencies = UpgradeData.upgrades[upgrade_id]["dependencies"]
-	buffs = UpgradeData.upgrades[upgrade_id]["buffs"]
-	costs = UpgradeData.upgrades[upgrade_id]["costs"]
-	upgrade_area.tooltip_text = title
-	
 	# Set initial line colors to dim
 	for child in get_children():
 		if child is Line2D:
