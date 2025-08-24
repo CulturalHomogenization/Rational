@@ -8,22 +8,29 @@ const GRAVITY := 20.0
 @onready var interact: Label3D = $InteractRay/Interact
 @onready var interact_ray: RayCast3D = $InteractRay
 @onready var hold_marker: Marker3D = $hold
+@onready var UpgradeMenu: SubViewportContainer = $"../CanvasLayer/SubViewportContainer"
 
 var previous_scene_path: String = ""
-var picked_up_item : RigidBody3D
+var held_item : PickupItem
 
-func pick_object():
-	var collider = interact_ray.get_collider()
-	if collider != null and collider.is_in_group("pickup"):
-		picked_up_item = collider
-		print(picked_up_item)
+func pickup_item(item: PickupItem):
+	if held_item:
+		drop_item()
+	
+	item.is_picked_up = true
+	item.collision_shape_3d.disabled = true
+	item.global_position = hold_marker.global_position
+	held_item = item
+	print("Picked up: ", item.item_name)
 
-func remove_object():
-	if picked_up_item != null:
-		picked_up_item.collision_shape_3d.disabled = false
-		picked_up_item = null
+func drop_item():
+	if held_item:
+		held_item.collision_shape_3d.disabled = false
+		held_item.is_picked_up = false
+		held_item = null
+		print("Dropped item")
 
-func check_if_in_wall(body :RigidBody3D) -> bool:
+func check_if_in_wall(body : PickupItem) -> bool:
 	var space_state :PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var collision_node :CollisionShape3D = body.get_node("CollisionShape3D")
 	var query :PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
@@ -92,26 +99,54 @@ func _physics_process(delta):
 		else:
 			if anim_player.current_animation != "Idle":
 				anim_player.play("Idle")
-	
-	if picked_up_item == null:
-		if interact_ray.is_colliding():
-			var collider = interact_ray.get_collider()
-			if collider is Interactable:
+
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		if collider is Interactable:
+			if held_item and collider.has_method("accepts_item") and collider.accepts_item(held_item.id):
 				interact.text = collider.get_prompt()
-				if Input.is_action_just_pressed(collider.prompt_input):
-					collider.interact(self)
-					if collider.is_in_group("pickup"):
-						if picked_up_item == null:
-							pick_object()
+				var pressed_action = collider.get_pressed_action()
+				if pressed_action != "":
+					collider.interact(self, pressed_action)
+			elif not held_item and collider is PickupItem and not collider.is_picked_up:
+				interact.text = collider.get_prompt()
+				var pressed_action = collider.get_pressed_action()
+				if pressed_action == "pickup":
+					pickup_item(collider)
+			elif not held_item and not (collider is PickupItem):
+				interact.text = collider.get_prompt()
+				var pressed_action = collider.get_pressed_action()
+				if pressed_action != "":
+					collider.interact(self, pressed_action)
+			elif held_item and (collider is PickupItem):
+				var key_name = ""
+				for event in InputMap.action_get_events("interact"):
+					if event is InputEventKey:
+						key_name = event.as_text_physical_keycode()
+						break
+				interact.text = "Swap [" + key_name + "]"
+				var pressed_action = collider.get_pressed_action()
+				if pressed_action == "pickup":
+					drop_item()
+					pickup_item(collider)
+				
+	else:
+		if held_item != null:
+			var key_name = ""
+			for event in InputMap.action_get_events("interact"):
+				if event is InputEventKey:
+					key_name = event.as_text_physical_keycode()
+					break
+			interact.text = "Drop [" + key_name + "]"
+			var pressed_action = held_item.get_pressed_action()
+			if held_item.get_pressed_action() == "pickup":
+				drop_item()
 		else:
 			interact.text = ""
 
-	elif picked_up_item != null:
-		picked_up_item.global_position = hold_marker.global_position
-		picked_up_item.global_rotation = Vector3.ZERO
-		if Input.is_action_just_pressed("interact"):
-			if check_if_in_wall(picked_up_item) == true:
-				remove_object()
+	if held_item:
+		held_item.global_position = hold_marker.global_position
+		held_item.global_rotation = Vector3.ZERO
 
-func _on_tech_station_interacted(body: Variant) -> void:
-	pass
+func _on_button_pressed() -> void:
+	UpgradeMenu.visible = false

@@ -12,16 +12,18 @@ position = Vector2(-200, -29)
 script = ExtResource("2_11363")
 
 [node name="16" parent="." instance=ExtResource("1_ltp0x")]
-anchors_preset = 0
 offset_left = -399.0
 offset_top = -86.0
 offset_right = -399.0
 offset_bottom = -86.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Upgrade" parent="." instance=ExtResource("1_ltp0x")]
-anchors_preset = 0
 offset_left = 339.72
 offset_top = 289.0
 offset_right = 339.72
 offset_bottom = 289.0
+grow_horizontal = 1
+grow_vertical = 1
 upgrade_id = 17
