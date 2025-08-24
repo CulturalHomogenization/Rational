@@ -28,6 +28,7 @@ offset_bottom = 50.0
 scale = Vector2(1.00235, 1)
 size_flags_horizontal = 6
 size_flags_vertical = 6
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_617o6")
 script = ExtResource("1_617o6")
 
@@ -48,6 +49,7 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Title"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_ogi1g")
 expand_mode = 2

@@ -161,8 +161,7 @@ animations = [{
 
 [node name="Upgrade" type="Control"]
 layout_mode = 3
-anchor_right = 0.015
-offset_right = -17.28
+anchors_preset = 0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("2_o0s84")
@@ -193,7 +192,7 @@ script = ExtResource("4_d2ffm")
 tooltip_icon = ExtResource("4_nxtxw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/VBoxContainer/MainIcon"]
-position = Vector2(58, 62)
+position = Vector2(60, 61)
 scale = Vector2(0.433673, 0.433673)
 sprite_frames = SubResource("SpriteFrames_n2b8e")
 
@@ -208,5 +207,5 @@ script = ExtResource("5_uudjn")
 [connection signal="mouse_exited" from="Panel/VBoxContainer/MainIcon" to="Panel/VBoxContainer/MainIcon" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Panel/VBoxContainer/Upgrade" to="Panel/VBoxContainer/Upgrade" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/VBoxContainer/Upgrade" to="Panel/VBoxContainer/Upgrade" method="_on_mouse_exited"]
-[connection signal="pressed" from="Panel/VBoxContainer/Upgrade" to="." method="_on_upgrade_iron_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Upgrade" to="." method="_on_upgrade_icon_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Upgrade" to="Panel/VBoxContainer/Upgrade" method="_on_pressed"]

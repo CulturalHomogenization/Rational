@@ -62,7 +62,7 @@ func apply_upgrade_buffs() -> void:
 		print("  - " + buff["type"] + ": " + str(buff["amount"]))
 
 
-func _on_upgrade_iron_pressed() -> void:
+func _on_upgrade_icon_pressed() -> void:
 # Check if upgrade can be purchased
 	if not can_purchase_upgrade():
 		print("Cannot purchase upgrade: " + title)

@@ -92,7 +92,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51748, 1, -0.519311)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15546, 1, 3.01919)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+process_physics_priority = 1
+layer = -1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -103,8 +104,10 @@ grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
+physics_object_picking = true
 size = Vector2i(1152, 648)
-render_target_update_mode = 0
+size_2d_override = Vector2i(500, 500)
+render_target_update_mode = 4
 
 [node name="UpgradeMenu" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_cetdd")]
 
