@@ -23,9 +23,8 @@ sky = SubResource("Sky_7u47w")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7u47w"]
-data = PackedVector3Array(-10, -0.5, -5, -10, 0, -4.5, -10, 0, 4.5, 10, 0, 4.5, 10, -0.5, 5, 10, 0, 5, 10, -0.5, 5, 10, 0, 4.5, 10, 0, -4.5, -10, -0.5, 5, 10, 0, 5, 10, -0.5, 5, -10, -0.5, 5, 10, -0.5, 5, 10, -0.5, -5, 10, -0.5, 5, 10, 0, -4.5, 10, -0.5, -5, 10, 0, -5, 10, -0.5, -5, 10, 0, -4.5, 9, 0.5, -4.5, 9, 0.5, 4.5, -9, 0.5, -4.5, -10, 0, -5, 10, -0.5, -5, 10, 0, -5, 10, 0, 5, -10, -0.5, 5, -10, 0, 5, -9, 0.5, 4.5, -9, 0.5, -4.5, 9, 0.5, 4.5, -10, 0, 5, -10, -0.5, 5, -10, 0, 4.5, -10, -0.5, -5, -10, 0, 4.5, -10, -0.5, 5, 10, -0.5, -5, -10, 0, -5, -10, -0.5, -5, -10, -0.5, 5, 10, -0.5, -5, -10, -0.5, -5, -10, 0, -4.5, -10, -0.5, -5, -10, 0, -5, 10, 4, 4.5, 9, 4, 4.5, 10, 4, -4.5, 9, 4, -4.5, 9, 4, 4.5, 9, 0.5, 4.5, 10, 4, -4.5, 9, 4, 4.5, 9, 4, -4.5, 10, 4, 4.5, 10, 4, -4.5, 10, 0, -4.5, 9, 4, -4.5, 9, 0.5, 4.5, 9, 0.5, -4.5, 10, 0, 4.5, 10, 4, 4.5, 10, 0, -4.5, -10, 4, -4.5, -10, 4, 4.5, -10, 0, 4.5, -10, 0, 4.5, -10, 0, -4.5, -10, 4, -4.5, -9, 4, 4.5, -10, 4, 4.5, -9, 4, -4.5, -9, 4, -4.5, -10, 4, 4.5, -10, 4, -4.5, -9, 4, 4.5, -9, 4, -4.5, -9, 0.5, -4.5, -9, 0.5, -4.5, -9, 0.5, 4.5, -9, 4, 4.5, 9, 0.5, -4.5, -9, 4, -4.5, 9, 4, -4.5, 10, 0, -5.5, 10, 4, -5.5, -10, 4, -5.5, 10, 0, -5, 10, 4, -4.5, 10, 0, -5.5, -10, 4, -5.5, 10, 4, -4.5, 9, 4, -4.5, -10, 0, -5, -10, 0, -5.5, -10, 4, -5.5, -10, 0, -4.5, -10, 0, -5, -10, 4, -5.5, 10, 4, -5.5, 10, 4, -4.5, -10, 4, -5.5, 10, 4, -4.5, 10, 4, -5.5, 10, 0, -5.5, -10, 0, -5.5, -10, 0, -5, 10, 0, -5.5, -10, 0, -5, 10, 0, -5, 10, 0, -5.5, 10, 0, -5.5, -10, 4, -5.5, -10, 0, -5.5, 10, 4, -4.5, 10, 0, -5, 10, 0, -4.5, 9, 0.5, -4.5, -9, 0.5, -4.5, -9, 4, -4.5, -10, 4, -5.5, -10, 4, -4.5, -10, 0, -4.5, -10, 4, -5.5, -9, 4, -4.5, -10, 4, -4.5, -10, 4, -5.5, 9, 4, -4.5, -9, 4, -4.5, 10, 4, 5.5, 9, 4, 4.5, 10, 4, 4.5, -10, 4, 4.5, -10, 0, 5, -10, 0, 4.5, 10, 4, 5.5, 10, 4, 4.5, 10, 0, 4.5, -10, 0, 5.5, -10, 0, 5, -10, 4, 4.5, 9, 4, 4.5, 10, 4, 5.5, -9, 4, 4.5, -10, 0, 5, -10, 0, 5.5, 10, 0, 5, -10, 4, 4.5, -10, 4, 5.5, -10, 0, 5.5, -9, 0.5, 4.5, 9, 4, 4.5, -9, 4, 4.5, 10, 0, 5, 10, 0, 5.5, 10, 4, 5.5, 10, 0, 5, 10, 4, 5.5, 10, 0, 4.5, -10, 4, 5.5, 10, 4, 5.5, -10, 0, 5.5, -10, 4, 4.5, 10, 4, 5.5, -10, 4, 5.5, -9, 4, 4.5, 10, 4, 5.5, -10, 4, 4.5, -9, 0.5, 4.5, 9, 0.5, 4.5, 9, 4, 4.5, 10, 4, 5.5, 10, 0, 5.5, -10, 0, 5.5, 10, 0, 5, -10, 0, 5.5, 10, 0, 5.5)
-backface_collision = true
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cetdd"]
+data = PackedVector3Array(14, 5, 11.5, 15, 5, -12.5, 15, 5, 12.5, 15, 0, -12.5, 15, 5, -12.5, -15, 5, -12.5, 15, 5, -12.5, 14, 5, -11.5, -15, 5, -12.5, 15, 0, 12.5, 15, 5, 12.5, 15, 0, -12.5, 15, 5, 12.5, 15, 0, 12.5, -15, 0, 12.5, 15, 5, 12.5, 15, 5, -12.5, 15, 0, -12.5, -15, 0, 12.5, 15, 0, 12.5, 15, 0, -12.5, -15, 0, 12.5, -15, 0, -12.5, -15, 5, -12.5, -15, 5, 12.5, -14, 5, 11.5, 15, 5, 12.5, -15, 5, 12.5, 15, 5, 12.5, -15, 0, 12.5, -14, 5, 11.5, -15, 5, 12.5, -14, 5, -11.5, -15, 5, -12.5, -15, 5, 12.5, -15, 0, 12.5, -14, 5, -11.5, -15, 5, -12.5, 14, 5, -11.5, 14, 5, -11.5, 15, 5, -12.5, 14, 5, 11.5, -14, 5, -11.5, -15, 5, 12.5, -15, 5, -12.5, 15, 0, -12.5, -15, 5, -12.5, -15, 0, -12.5, 14, 5, 11.5, 15, 5, 12.5, -14, 5, 11.5, -15, 0, 12.5, 15, 0, -12.5, -15, 0, -12.5, 14, 0.5, -11.5, 14, 5, -11.5, 14, 5, 11.5, -14, 5, 11.5, 14, 0.5, 11.5, 14, 5, 11.5, 14, 5, -11.5, 14, 0.5, -11.5, -14, 0.5, -11.5, 14, 5, 11.5, 14, 0.5, 11.5, 14, 0.5, -11.5, 14, 0.5, -11.5, 14, 0.5, 11.5, -14, 0.5, 11.5, -14, 0.5, 11.5, -14, 5, 11.5, -14, 5, -11.5, 14, 5, -11.5, -14, 0.5, -11.5, -14, 5, -11.5, -14, 5, 11.5, -14, 0.5, 11.5, 14, 0.5, 11.5, -14, 0.5, -11.5, 14, 0.5, -11.5, -14, 0.5, 11.5, -14, 5, -11.5, -14, 0.5, -11.5, -14, 0.5, 11.5)
 
 [node name="Kitchen" type="Node3D"]
 
@@ -34,8 +33,13 @@ process_physics_priority = 1
 layer = -1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_target = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
@@ -62,12 +66,12 @@ grow_horizontal = 0
 text = "  X  "
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.79906, -0.207665)
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 14.799, 6)
 attributes = SubResource("CameraAttributesPractical_pfa8w")
 current = true
-fov = 80.8
+fov = 68.6
 size = 10.0
-near = 0.009
+near = 0.006
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_23qos")
@@ -82,27 +86,22 @@ omni_range = 4096.0
 collision_layer = 3
 collision_mask = 3
 
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+operation = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+size = Vector3(30, 7, 25)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+operation = 2
+size = Vector3(28, 8, 23)
+
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Room"]
-shape = SubResource("ConcavePolygonShape3D_7u47w")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Room"]
-size = Vector3(20, 1, 10)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, 0)
-size = Vector3(1, 4, 10)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, 0)
-size = Vector3(1, 4, 10)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
-size = Vector3(20, 4, 1)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5)
-size = Vector3(20, 4, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+shape = SubResource("ConcavePolygonShape3D_cetdd")
 
 [node name="Player" parent="." instance=ExtResource("1_7u47w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45118, 2, 0.995445)
