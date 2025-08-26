@@ -1,6 +1,37 @@
 extends Interactable
 
-@export var accepted_item_ids: Array[String] = ["Coal"]
+@export var accepted_item_ids: Array[String] = [
+	"Brass-Infused Soil Crucibles",
+	"Riveted Growth Lattices",
+	"Mineral-Tuned Water Condensers",
+	"Steam Seed Incubators",
+	"Coal-Fired Radiant Braziers",
+	"Gear-Clamped Harvest Shears",
+	"Pressure-Dial Water Regulators",
+	"Steam-Powered Soil Augers",
+	"Copper-Plated Sun Diverters",
+	"Oscillating Pollen Turbines",
+	"Seed Conveyor Turbine",
+	"Steam-Driven Root Infusers",
+	"Condensate Reclaim Funnels",
+	"Boiler-Piped Root Jackets",
+	"Fog-Driven Moisture Manifolds",
+	"Gear-Ratcheted Seeder Frames",
+	"Coil-Spun Dew Harvesters",
+	"Soil-Gauge Chronometers",
+	"Piston-Driven Fertilizer Pumps",
+	"Steam-Gridded Soil Plates",
+	"Wire-Caged Airflow Trellises",
+	"Reflective Brass Canopies",
+	"Lever-Pumped Water Towers",
+	"Pulley-Drawn Shade Mechanisms",
+	"Auto-Sowing Apparatus",
+	"Slag-Fired Nutrient Distillers",
+	"Steam-Tubed Nutrient Conduits",
+	"Auto-Harvest Engine",
+	"Vapor-Sealed Growth Chambers",
+	"Furnace-Driven Thermal Casings"
+]
 @export var station_name: String = "Storage"
 var stored_items : Array[String] = []
 func _ready() -> void:

@@ -3,19 +3,19 @@
 [ext_resource type="Script" uid="uid://3s636fj8dbiy" path="res://Scenes/ConveyorBelt.gd" id="1_xgy6c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u4h2y"]
-size = Vector3(6, 1, 1)
+size = Vector3(10.5278, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xgy6c"]
-size = Vector3(5.99585, 0.622559, 1)
+size = Vector3(10.491, 0.622559, 1)
 
 [node name="ConveyorBelt" type="StaticBody3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 0)
-size = Vector3(6, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49976, 0, 0)
+size = Vector3(10.4995, 1, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25204, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51596, 0, 0)
 shape = SubResource("BoxShape3D_u4h2y")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -23,11 +23,11 @@ collision_layer = 0
 script = ExtResource("1_xgy6c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24768, 0.730583, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49524, 0.730583, 0)
 shape = SubResource("BoxShape3D_xgy6c")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163521, 1.28364, 0.314433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392319, 1.28364, 0.314433)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

@@ -8,12 +8,12 @@ friction = 0.1
 [sub_resource type="BoxShape3D" id="BoxShape3D_76jc4"]
 
 [node name="Iron" type="RigidBody3D" groups=["pickup"]]
+collision_layer = 3
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_lfcn5")
 continuous_cd = true
 script = ExtResource("1_lfcn5")
 id = "iron"
-prompt_message = "Pickup (Iron)"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_76jc4")

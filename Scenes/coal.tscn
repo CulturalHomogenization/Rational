@@ -5,8 +5,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4v3ac"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4v3ac"]
+radius = 0.466186
 
 [node name="Coal" type="RigidBody3D" groups=["pickup"]]
+collision_layer = 3
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_4v3ac")
 inertia = Vector3(1, 1, 1)
@@ -17,6 +19,7 @@ id = "Coal"
 item_name = "Coal"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.474546
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_4v3ac")

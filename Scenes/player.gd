@@ -129,7 +129,10 @@ func _physics_process(delta):
 				if pressed_action == "pickup":
 					drop_item()
 					pickup_item(collider)
-				
+			else:
+				var pressed_action = held_item.get_pressed_action()
+				if pressed_action == "pickup":
+					drop_item()
 	else:
 		if held_item != null:
 			var key_name = ""
@@ -138,9 +141,6 @@ func _physics_process(delta):
 					key_name = event.as_text_physical_keycode()
 					break
 			interact.text = "Drop [" + key_name + "]"
-			var pressed_action = held_item.get_pressed_action()
-			if held_item.get_pressed_action() == "pickup":
-				drop_item()
 		else:
 			interact.text = ""
 
@@ -150,3 +150,12 @@ func _physics_process(delta):
 
 func _on_button_pressed() -> void:
 	UpgradeMenu.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	print("stuff")
+	if held_item != null:
+		print("hello")
+		if not interact_ray.is_colliding():
+			print("world")
+			if Input.is_action_just_pressed("interact"):
+				drop_item()
