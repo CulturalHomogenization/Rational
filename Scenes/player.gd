@@ -5,13 +5,14 @@ const TURN_SPEED := 8.0
 const GRAVITY := 20.0
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var interact: Label3D = $InteractRay/Interact
-@onready var interact_ray: RayCast3D = $InteractRay
+@onready var interact: Label3D = $InteractArea/Interact
+@onready var interact_area: Area3D = $InteractArea
 @onready var hold_marker: Marker3D = $hold
 @onready var UpgradeMenu: SubViewportContainer = $"../CanvasLayer/SubViewportContainer"
 
 var previous_scene_path: String = ""
 var held_item : PickupItem
+var closest_interactable: Interactable = null
 
 func pickup_item(item: PickupItem):
 	if held_item:
@@ -100,47 +101,52 @@ func _physics_process(delta):
 			if anim_player.current_animation != "Idle":
 				anim_player.play("Idle")
 
-	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
-		if collider is Interactable:
-			if held_item and collider.has_method("accepts_item") and collider.accepts_item(held_item.id):
-				interact.text = collider.get_prompt()
-				var pressed_action = collider.get_pressed_action()
-				if pressed_action != "":
-					collider.interact(self, pressed_action)
-			elif not held_item and collider is PickupItem and not collider.is_picked_up:
-				interact.text = collider.get_prompt()
-				var pressed_action = collider.get_pressed_action()
-				if pressed_action == "pickup":
-					pickup_item(collider)
-			elif not held_item and not (collider is PickupItem):
-				interact.text = collider.get_prompt()
-				var pressed_action = collider.get_pressed_action()
-				if pressed_action != "":
-					collider.interact(self, pressed_action)
-			elif held_item and (collider is PickupItem):
-				var key_name = ""
-				for event in InputMap.action_get_events("interact"):
-					if event is InputEventKey:
-						key_name = event.as_text_physical_keycode()
-						break
-				interact.text = "Swap [" + key_name + "]"
-				var pressed_action = collider.get_pressed_action()
-				if pressed_action == "pickup":
-					drop_item()
-					pickup_item(collider)
-			else:
-				var pressed_action = held_item.get_pressed_action()
-				if pressed_action == "pickup":
-					drop_item()
+	var bodies = interact_area.get_overlapping_bodies()
+	var areas = interact_area.get_overlapping_areas()
+	var all_objects = bodies + areas
+	
+	closest_interactable = null
+	var closest_distance = INF
+	
+	for obj in all_objects:
+		if obj is Interactable:
+			var distance = global_position.distance_to(obj.global_position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_interactable = obj
+	
+	if closest_interactable != null:
+		if held_item and closest_interactable is PickupItem:
+			# Holding item + looking at pickup = swap
+			var key_name = ""
+			for event in InputMap.action_get_events("interact"):
+				if event is InputEventKey:
+					key_name = event.as_text_physical_keycode()
+					break
+			interact.text = "Swap [" + key_name + "]"
+			var pressed_action = closest_interactable.get_pressed_action()
+			if pressed_action == "pickup":
+				drop_item()
+				pickup_item(closest_interactable)
+		else:
+			# All other cases: show the object's prompt and handle its interactions
+			interact.text = closest_interactable.get_prompt()
+			var pressed_action = closest_interactable.get_pressed_action()
+			if pressed_action == "pickup" and closest_interactable is PickupItem and not closest_interactable.is_picked_up and not held_item:
+				pickup_item(closest_interactable)
+			elif pressed_action != "" and pressed_action != "pickup":
+				closest_interactable.interact(self, pressed_action)
 	else:
-		if held_item != null:
+		# Not looking at anything
+		if held_item:
 			var key_name = ""
 			for event in InputMap.action_get_events("interact"):
 				if event is InputEventKey:
 					key_name = event.as_text_physical_keycode()
 					break
 			interact.text = "Drop [" + key_name + "]"
+			if Input.is_action_just_pressed("interact"):
+				drop_item()
 		else:
 			interact.text = ""
 
@@ -150,12 +156,3 @@ func _physics_process(delta):
 
 func _on_button_pressed() -> void:
 	UpgradeMenu.visible = false
-
-func _unhandled_input(event: InputEvent) -> void:
-	print("stuff")
-	if held_item != null:
-		print("hello")
-		if not interact_ray.is_colliding():
-			print("world")
-			if Input.is_action_just_pressed("interact"):
-				drop_item()

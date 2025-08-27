@@ -38,6 +38,7 @@ process_physics_priority = 1
 layer = -1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,7 +53,7 @@ physics_object_picking = true
 size = Vector2i(1152, 648)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="UpgradeMenu" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_cetdd")]
 
@@ -112,6 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45118, 2, 0.995445)
 
 [node name="TechStation" parent="." instance=ExtResource("2_23qos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -4)
+collision_layer = 3
 station_name = "Tech Station"
 
 [node name="ConveyorBelt" parent="." instance=ExtResource("5_pb1w8")]

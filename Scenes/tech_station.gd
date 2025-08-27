@@ -32,8 +32,10 @@ extends Interactable
 	"Vapor-Sealed Growth Chambers",
 	"Furnace-Driven Thermal Casings"
 ]
+
 @export var station_name: String = "Storage"
 var stored_items : Array[String] = []
+
 func _ready() -> void:
 	interaction_actions = {
 		"Open Menu" : {
