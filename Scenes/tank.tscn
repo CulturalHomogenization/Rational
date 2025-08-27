@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0mcwbdsd0ojf"]
+
+[ext_resource type="PackedScene" uid="uid://bnyj66ecsioj1" path="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/StylizedTankBody.fbx" id="1_vjxkb"]
+[ext_resource type="PackedScene" uid="uid://3qh3itwuoaki" path="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/StylizedTankBarrel.fbx" id="2_6c1wy"]
+[ext_resource type="PackedScene" uid="uid://c0hql8cf1eewh" path="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/StylizedTankLeftTread.fbx" id="3_iirto"]
+[ext_resource type="PackedScene" uid="uid://c4i4lv0sywf4r" path="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/StylizedTankRightTread.fbx" id="4_ntitd"]
+[ext_resource type="PackedScene" uid="uid://cfj7lr41v7nii" path="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/StylizedTankTurretBase.fbx" id="5_nayyn"]
+[ext_resource type="PackedScene" uid="uid://dh7gscfrgc62u" path="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/wheels.glb" id="6_lokyu"]
+
+[node name="VehicleBody3D" type="VehicleBody3D"]
+
+[node name="StylizedTankBody" parent="." instance=ExtResource("1_vjxkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.037)
+
+[node name="StylizedTankBarrel" parent="." instance=ExtResource("2_6c1wy")]
+
+[node name="StylizedTankLeftTread" parent="." instance=ExtResource("3_iirto")]
+
+[node name="StylizedTankRightTread" parent="." instance=ExtResource("4_ntitd")]
+
+[node name="StylizedTankTurretBase" parent="." instance=ExtResource("5_nayyn")]
+
+[node name="wheels" parent="." instance=ExtResource("6_lokyu")]

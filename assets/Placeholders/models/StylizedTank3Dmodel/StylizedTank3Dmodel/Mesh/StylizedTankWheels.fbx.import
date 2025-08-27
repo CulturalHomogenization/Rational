@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bw4w4tyyrg8il"
-path="res://.godot/imported/scene.gltf-6fed95f62403ae9d9dbaff08702dc109.scn"
+uid="uid://cvie7bnf203rf"
+path="res://.godot/imported/StylizedTankWheels.fbx-8ac6191587dad6f9c4924055cc89e987.scn"
 
 [deps]
 
-source_file="res://scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-6fed95f62403ae9d9dbaff08702dc109.scn"]
+source_file="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Mesh/StylizedTankWheels.fbx"
+dest_files=["res://.godot/imported/StylizedTankWheels.fbx-8ac6191587dad6f9c4924055cc89e987.scn"]
 
 [params]
 
@@ -28,10 +28,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
