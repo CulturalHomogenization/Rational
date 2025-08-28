@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
-[ext_resource type="PackedScene" uid="uid://dwkewfyblil05" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
+[ext_resource type="PackedScene" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
 [ext_resource type="PackedScene" uid="uid://cgdkkcmn6w585" path="res://Scenes/item_collection.tscn" id="5_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
-[ext_resource type="PackedScene" uid="uid://bm35noykekl47" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
+[ext_resource type="PackedScene" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://d145t385yqba6" path="res://Scenes/upgrade_menu.tscn" id="7_cetdd"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]

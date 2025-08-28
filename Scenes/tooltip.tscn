@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cuiili2htwoy7"]
 
-[ext_resource type="Script" uid="uid://dnglmhhupd40h" path="res://Scenes/tooltip.gd" id="1_617o6"]
+[ext_resource type="Script" path="res://Scenes/tooltip.gd" id="1_617o6"]
 [ext_resource type="Texture2D" uid="uid://6d6ffhtethkp" path="res://icon.svg" id="1_ogi1g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_617o6"]

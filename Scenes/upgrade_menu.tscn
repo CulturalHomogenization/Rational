@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d145t385yqba6"]
 
-[ext_resource type="Script" uid="uid://bkelg28ldv1r2" path="res://Scenes/upgrade_menu.gd" id="1_6gn5s"]
+[ext_resource type="Script" path="res://Scenes/upgrade_menu.gd" id="1_6gn5s"]
 [ext_resource type="PackedScene" uid="uid://dw6i3j06ujwui" path="res://Scenes/upgrade.tscn" id="1_ltp0x"]
-[ext_resource type="Script" uid="uid://dgo1bujf885d1" path="res://Scenes/camera_2d.gd" id="2_11363"]
+[ext_resource type="Script" path="res://Scenes/camera_2d.gd" id="2_11363"]
 
 [node name="UpgradeMenu" type="Node2D"]
 script = ExtResource("1_6gn5s")
