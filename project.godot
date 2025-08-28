@@ -32,6 +32,7 @@ import/blender/enabled=false
 [global_group]
 
 pickup="items that can be picked up"
+player=""
 
 [input]
 

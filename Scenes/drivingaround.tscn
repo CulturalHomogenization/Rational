@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmsi3ueiowp4h"]
+[gd_scene load_steps=9 format=3 uid="uid://cmsi3ueiowp4h"]
 
 [ext_resource type="PackedScene" uid="uid://c0mcwbdsd0ojf" path="res://Scenes/tank.tscn" id="1_cauh5"]
+[ext_resource type="PackedScene" uid="uid://dvggqgx51q0oq" path="res://Scenes/enemytank.tscn" id="2_w8kak"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="3_7x4ep"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7x4ep"]
 size = Vector2(1000, 1000)
@@ -40,3 +42,11 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="VehicleBody3D" parent="." instance=ExtResource("1_cauh5")]
+
+[node name="EnemyTank" parent="." instance=ExtResource("2_w8kak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72956, 0.361999, 34.2937)
+mass = 1000.0
+health = 1000.0
+
+[node name="ProtoController" parent="." instance=ExtResource("3_7x4ep")]
+transform = Transform3D(0.0647239, 0, 0.997903, 0, 1, 0, -0.997903, 0, 0.0647239, -0.317825, 0, 5.62348)

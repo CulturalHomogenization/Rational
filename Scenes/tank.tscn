@@ -685,9 +685,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_44slq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_42q8f"]
-size = Vector3(2.0105, 0.34729, 1)
+size = Vector3(2.0105, 0.67659, 0.604004)
 
-[node name="VehicleBody3D" type="VehicleBody3D"]
+[node name="VehicleBody3D" type="VehicleBody3D" groups=["player"]]
 script = ExtResource("1_7f80w")
 
 [node name="Turret" type="Node3D" parent="."]
@@ -801,8 +801,5 @@ mesh = SubResource("ArrayMesh_lnch0")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149536, 0.419617, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149536, 0.480889, -0.0109863)
 shape = SubResource("BoxShape3D_42q8f")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.24154e-08, -0.241702, 0.970351, -1.05651e-08, 0.970351, 0.241702, -1, 0, -4.37114e-08, 1.5916, 1.235, 0)

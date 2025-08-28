@@ -21,6 +21,8 @@ var camera_yaw: float = 0.0
 var camera_pitch: float = 0.0
 var aim_point: Vector3
 
+
+
 func _ready():
 	# Get the main camera from the scene
 	camera = get_viewport().get_camera_3d()
