@@ -124,7 +124,7 @@ func _physics_process(delta):
 				closest_interactable = obj
 	
 	if closest_interactable != null:
-		if held_item and closest_interactable is PickupItem:
+		if held_item and closest_interactable is PickupItem and closest_interactable != held_item:
 			# Holding item + looking at pickup = swap
 			var key_name = ""
 			for event in InputMap.action_get_events("interact"):

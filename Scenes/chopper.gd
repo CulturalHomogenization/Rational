@@ -17,6 +17,7 @@ extends Interactable
 @onready var item_position: Marker3D = $Item
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var chopping_timer: Timer = $ChoppingTimer
+@onready var info: Label3D = $Info
 
 var is_chopping: bool = false
 var current_ingredient: Ingredient = null
@@ -24,7 +25,7 @@ var current_ingredient: Ingredient = null
 func _ready() -> void:
 	interaction_actions = {
 		"Insert Item": {
-			"message": "Insert Ingredient to Chop",
+			"message": "Chop Ingredient",
 			"input_action": "interact"
 		}
 	}
@@ -50,13 +51,13 @@ func _on_chopping_station_interacted(player, action_id: String):
 			if player.held_item and accepts_item(player.held_item):
 				start_chopping(player, player.held_item)
 			elif is_chopping:
-				print("Station is currently chopping an item")
+				info.show_message("Station is currently chopping an item")
 			elif player.held_item and player.held_item is Ingredient and not (player.held_item.id in accepted_item_ids):
-				print("This ingredient needs to be milled, not chopped")
+				info.show_message("This ingredient needs to be milled, not chopped")
 			elif player.held_item and player.held_item is Ingredient and not player.held_item.can_be_processed():
-				print("This ingredient can't be processed (no processed item scene set)")
+				info.show_message("This ingredient can't be processed")
 			else:
-				print("This station only accepts choppable ingredients")
+				info.show_message("This station only accepts choppable ingredients")
 
 func start_chopping(player, ingredient: Ingredient):
 	current_ingredient = ingredient
@@ -65,7 +66,7 @@ func start_chopping(player, ingredient: Ingredient):
 	ingredient.get_parent().remove_child(ingredient)
 	add_child(ingredient)
 	ingredient.global_position = item_position.global_position
-	
+	ingredient.freeze = true
 	ingredient.collision_shape_3d.disabled = true
 	ingredient.is_picked_up = false
 	ingredient.interaction_actions.clear()
