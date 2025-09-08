@@ -16,18 +16,25 @@ var closest_interactable: Interactable = null
 
 func pickup_item(item: PickupItem):
 	if held_item:
-		drop_item()
-	
+		var can_drop := check_if_in_wall(held_item)
+		if not check_if_in_wall(held_item):
+			drop_item()
+		else:
+			return
 	item.is_picked_up = true
 	item.collision_shape_3d.disabled = true
 	item.global_position = hold_marker.global_position
 	held_item = item
 	print("Picked up: ", item.item_name)
+		
+
 
 func drop_item():
-	if held_item:
+	print("Dropping: ", check_if_in_wall(held_item))
+	if held_item and not check_if_in_wall(held_item):
 		held_item.collision_shape_3d.disabled = false
 		held_item.is_picked_up = false
+		held_item.linear_velocity = velocity
 		held_item = null
 		print("Dropped item")
 
@@ -44,10 +51,11 @@ func check_if_in_wall(body : PickupItem) -> bool:
 	var results :Array[Dictionary] = space_state.intersect_shape(query, 32)
 	print(results)
 	for result in results:
-		var collider :Object = result.collider
+		var collider : Object = result.collider
 		if collider is StaticBody3D or collider is RigidBody3D:
-			return false
-	return true
+			print(result)
+			return true
+	return false
 
 func _push_away_rigid_bodies():
 	for i in  get_slide_collision_count():

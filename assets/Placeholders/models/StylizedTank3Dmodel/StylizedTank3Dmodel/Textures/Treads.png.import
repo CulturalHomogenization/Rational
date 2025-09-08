@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxy62mcrajwfj"
-path.s3tc="res://.godot/imported/Treads.png-ad0a5b80080cfa646f3bfa46c305276c.s3tc.ctex"
+path.s3tc="res://.godot/imported/Treads.png-b4a800ec9100d56b6a325855af93962d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/textures/Treads.png"
-dest_files=["res://.godot/imported/Treads.png-ad0a5b80080cfa646f3bfa46c305276c.s3tc.ctex"]
+source_file="res://assets/Placeholders/models/StylizedTank3Dmodel/StylizedTank3Dmodel/Textures/Treads.png"
+dest_files=["res://.godot/imported/Treads.png-b4a800ec9100d56b6a325855af93962d.s3tc.ctex"]
 
 [params]
 

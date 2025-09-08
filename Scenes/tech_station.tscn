@@ -8,7 +8,6 @@ backface_collision = true
 
 [node name="TechStation" type="StaticBody3D"]
 script = ExtResource("1_lsnmk")
-prompt_message = "Upgrade Tech"
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0422292, 0.746429, 0.506798)

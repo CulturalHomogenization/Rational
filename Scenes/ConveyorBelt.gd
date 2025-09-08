@@ -7,6 +7,13 @@ extends Area3D
 @onready var marker_3d: Marker3D = $"../Marker3D"
 const COAL = preload("res://Scenes/coal.tscn")
 const IRON = preload("res://Scenes/iron.tscn")
+const JUNK = preload("res://Scenes/junk.tscn")
+var resources = [
+		{ "scene": JUNK, "weight": 90 },
+		{ "scene": COAL, "weight": 5 },
+		{ "scene": IRON, "weight": 5 },
+	]
+
 func _ready() -> void:
 	print("hello")
 	timer.start()
@@ -41,8 +48,20 @@ func _physics_process(delta):
 
 func _on_timer_timeout() -> void:
 	timer.start(randi_range(2, 8))
-	var instance = COAL.instantiate()
+	var total_weight = 0
+	for res in resources:
+		total_weight += res.weight
+	var roll = randf() * total_weight
+	var cumulative = 0
+
+	var selected_scene = JUNK # fallback
+
+	for res in resources:
+		cumulative += res.weight
+		if roll < cumulative:
+			selected_scene = res.scene
+			break
+	var instance = selected_scene.instantiate()
 	instance.global_position = marker_3d.global_position
 	get_tree().get_root().add_child(instance)
-	print("timer")
 	
