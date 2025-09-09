@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
-[ext_resource type="PackedScene" uid="uid://dwkewfyblil05" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
+[ext_resource type="PackedScene" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
 [ext_resource type="PackedScene" uid="uid://cgdkkcmn6w585" path="res://Scenes/item_collection.tscn" id="5_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
-[ext_resource type="PackedScene" uid="uid://bm35noykekl47" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
+[ext_resource type="PackedScene" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://d145t385yqba6" path="res://Scenes/upgrade_menu.tscn" id="7_cetdd"]
 [ext_resource type="PackedScene" uid="uid://pnyu6ositnse" path="res://Scenes/chopper.tscn" id="8_o8uib"]
 [ext_resource type="PackedScene" uid="uid://80sxp4aemelr" path="res://Scenes/carrot.tscn" id="9_kr0tx"]
@@ -40,7 +40,6 @@ process_physics_priority = 1
 layer = -1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,7 +54,7 @@ physics_object_picking = true
 size = Vector2i(1152, 648)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="UpgradeMenu" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_cetdd")]
 
@@ -90,7 +89,6 @@ collision_mask = 3
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-visible = false
 operation = 1
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Room/CSGCombiner3D"]

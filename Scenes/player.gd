@@ -26,7 +26,6 @@ func pickup_item(item: PickupItem):
 	item.global_position = hold_marker.global_position
 	held_item = item
 	print("Picked up: ", item.item_name)
-		
 
 
 func drop_item():
@@ -35,6 +34,7 @@ func drop_item():
 		held_item.collision_shape_3d.disabled = false
 		held_item.is_picked_up = false
 		held_item.linear_velocity = velocity
+		held_item.freeze = false
 		held_item = null
 		print("Dropped item")
 
@@ -60,7 +60,7 @@ func check_if_in_wall(body : PickupItem) -> bool:
 func _push_away_rigid_bodies():
 	for i in  get_slide_collision_count():
 		var c := get_slide_collision(i)
-		if c.get_collider() is RigidBody3D:
+		if c.get_collider() is RigidBody3D and not held_item:
 			var push_dir = -c.get_normal()
 			var velocity_diff_in_push_dir = self.velocity.dot(push_dir) - c.get_collider().linear_velocity.dot(push_dir)
 			velocity_diff_in_push_dir = max(0., velocity_diff_in_push_dir)
@@ -160,6 +160,7 @@ func _physics_process(delta):
 
 	if held_item:
 		held_item.global_position = hold_marker.global_position
+		held_item.freeze = true
 		held_item.global_rotation = Vector3.ZERO
 
 func _on_button_pressed() -> void:
