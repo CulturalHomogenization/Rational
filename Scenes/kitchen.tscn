@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bao4vfkn1220f"]
+[gd_scene load_steps=17 format=3 uid="uid://bao4vfkn1220f"]
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
+[ext_resource type="PackedScene" uid="uid://carev1j0wq462" path="res://Scenes/plantingarea.tscn" id="2_2cl3g"]
 [ext_resource type="PackedScene" uid="uid://6w0kmgtxep2k" path="res://Scenes/tech_station.tscn" id="2_23qos"]
-[ext_resource type="PackedScene" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
+[ext_resource type="PackedScene" uid="uid://cfq0pmgds2msb" path="res://Scenes/carrot_seed.tscn" id="3_4clir"]
+[ext_resource type="PackedScene" uid="uid://dwkewfyblil05" path="res://Scenes/refinery.tscn" id="4_6pjjr"]
 [ext_resource type="PackedScene" uid="uid://cgdkkcmn6w585" path="res://Scenes/item_collection.tscn" id="5_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://24fa22jdgssc" path="res://Scenes/conveyor_belt.tscn" id="5_pb1w8"]
-[ext_resource type="PackedScene" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
+[ext_resource type="PackedScene" uid="uid://bm35noykekl47" path="res://Scenes/crafter.tscn" id="6_jbuf1"]
 [ext_resource type="PackedScene" uid="uid://d145t385yqba6" path="res://Scenes/upgrade_menu.tscn" id="7_cetdd"]
 [ext_resource type="PackedScene" uid="uid://pnyu6ositnse" path="res://Scenes/chopper.tscn" id="8_o8uib"]
 [ext_resource type="PackedScene" uid="uid://80sxp4aemelr" path="res://Scenes/carrot.tscn" id="9_kr0tx"]
@@ -25,8 +27,9 @@ sky = SubResource("Sky_7u47w")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cetdd"]
-data = PackedVector3Array(15, 0, -12.5, -15, 7, -12.5, -15, 0, -12.5, -14, 7, 11.5, -15, 7, 12.5, -14, 7, -11.5, -15, 7, 12.5, 15, 7, 12.5, -15, 0, 12.5, -15, 7, -12.5, -15, 7, 12.5, -15, 0, 12.5, -14, 7, -11.5, -15, 7, -12.5, 14, 7, -11.5, -15, 7, 12.5, -14, 7, 11.5, 15, 7, 12.5, -14, 7, -11.5, -15, 7, 12.5, -15, 7, -12.5, -15, 0, 12.5, 15, 0, 12.5, 15, 0, -12.5, -15, 3.5, -9.5, -15, 7, -12.5, -15, 0, 12.5, -15, 3.5, -11.5, -15, 7, -12.5, -15, 3.5, -9.5, 15, 7, 12.5, 15, 0, 12.5, -15, 0, 12.5, 15, 0, 12.5, 15, 7, 12.5, 15, 0, -12.5, -15, 7, -12.5, -15, 3.5, -11.5, -15, 0, -12.5, 14, 7, 11.5, 15, 7, -12.5, 15, 7, 12.5, -15, 0, -12.5, -15, 3.5, -11.5, -15, 0.5, -11.5, 14, 7, 11.5, 15, 7, 12.5, -14, 7, 11.5, 15, 0, -12.5, 15, 7, -12.5, -15, 7, -12.5, 15, 7, -12.5, 14, 7, -11.5, -15, 7, -12.5, 15, 7, 12.5, 15, 7, -12.5, 15, 0, -12.5, -15, 0, 12.5, 15, 0, -12.5, -15, 0, -12.5, 14, 7, -11.5, 15, 7, -12.5, 14, 7, 11.5, -15, 3.5, -9.5, -15, 0, 12.5, -15, 0.5, -9.5, -15, 0.5, -9.5, -15, 0, 12.5, -15, 0.5, -11.5, -15, 0.5, -11.5, -15, 0, 12.5, -15, 0, -12.5, 14, 0.5, -11.5, 14, 0.5, 11.5, -14, 0.5, 11.5, -14, 7, 11.5, 14, 0.5, 11.5, 14, 7, 11.5, 14, 0.5, -11.5, 14, 7, -11.5, 14, 7, 11.5, 14, 7, 11.5, 14, 0.5, 11.5, 14, 0.5, -11.5, -14, 7, -11.5, -14, 3.5, -9.5, -14, 0.5, 11.5, 14, 7, -11.5, 14, 0.5, -11.5, -14, 3.5, -11.5, -14, 0.5, 11.5, -14, 7, 11.5, -14, 7, -11.5, 14, 7, -11.5, -14, 3.5, -11.5, -14, 7, -11.5, -14, 7, -11.5, -14, 3.5, -11.5, -14, 3.5, -9.5, -14, 7, 11.5, -14, 0.5, 11.5, 14, 0.5, 11.5, -14, 0.5, -9.5, 14, 0.5, -11.5, -14, 0.5, 11.5, -14, 0.5, -11.5, -14, 3.5, -11.5, 14, 0.5, -11.5, -14, 0.5, -11.5, 14, 0.5, -11.5, -14, 0.5, -9.5, -14, 0.5, 11.5, -14, 3.5, -9.5, -14, 0.5, -9.5, -15, 0.5, -9.5, -15, 0.5, -11.5, -14, 0.5, -9.5, -14, 3.5, -9.5, -14, 3.5, -11.5, -15, 3.5, -9.5, -15, 3.5, -11.5, -15, 3.5, -9.5, -14, 3.5, -11.5, -15, 3.5, -9.5, -15, 0.5, -9.5, -14, 3.5, -9.5, -14, 3.5, -11.5, -14, 0.5, -11.5, -15, 3.5, -11.5, -14, 0.5, -9.5, -14, 3.5, -9.5, -15, 0.5, -9.5, -15, 0.5, -11.5, -15, 3.5, -11.5, -14, 0.5, -11.5, -14, 0.5, -11.5, -14, 0.5, -9.5, -15, 0.5, -11.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kr0tx"]
+data = PackedVector3Array(-14, 11, 11.5, -15, 11, 12.5, -14, 11, -11.5, -15, 0, 12.5, 15, 0, -12.5, -15, 0, -12.5, 15, 0, -12.5, -15, 11, -12.5, -15, 0, -12.5, -15, 3.5, -11.5, -15, 11, -12.5, -15, 3.5, -9.5, 15, 11, 12.5, 15, 0, 12.5, -15, 0, 12.5, -14, 11, -11.5, -15, 11, 12.5, -15, 11, -12.5, -15, 0, 12.5, 15, 0, 12.5, 15, 0, -12.5, -14, 11, -11.5, -15, 11, -12.5, 14, 11, -11.5, -15, 11, -12.5, -15, 11, 12.5, -15, 0, 12.5, 15, 3.5, -9.5, 15, 0, 12.5, 15, 11, 12.5, -15, 11, 12.5, 15, 11, 12.5, -15, 0, 12.5, -15, 11, 12.5, -14, 11, 11.5, 15, 11, 12.5, 15, 0.5, -11.5, 15, 3.5, -11.5, 15, 11, -12.5, 15, 0.5, -11.5, 15, 11, -12.5, 15, 0, -12.5, 15, 0.5, -11.5, 15, 0, -12.5, 15, 0.5, -9.5, 15, 0.5, -9.5, 15, 0, 12.5, 15, 3.5, -9.5, 15, 0, 12.5, 15, 0.5, -9.5, 15, 0, -12.5, -15, 3.5, -9.5, -15, 0, 12.5, -15, 0.5, -9.5, 14, 11, 11.5, 15, 11, -12.5, 15, 11, 12.5, -15, 0, -12.5, -15, 3.5, -11.5, -15, 0.5, -11.5, 14, 11, 11.5, 15, 11, 12.5, -14, 11, 11.5, 14, 11, -11.5, 15, 11, -12.5, 14, 11, 11.5, 15, 11, -12.5, 15, 3.5, -9.5, 15, 11, 12.5, -15, 0.5, -11.5, -15, 0, 12.5, -15, 0, -12.5, -15, 0.5, -9.5, -15, 0, 12.5, -15, 0.5, -11.5, 15, 11, -12.5, 15, 3.5, -11.5, 15, 3.5, -9.5, -15, 11, -12.5, -15, 3.5, -11.5, -15, 0, -12.5, -15, 3.5, -9.5, -15, 11, -12.5, -15, 0, 12.5, 15, 11, -12.5, 14, 11, -11.5, -15, 11, -12.5, 15, 0, -12.5, 15, 11, -12.5, -15, 11, -12.5, 14, 3.5, -9.5, 14, 3.5, -11.5, 14, 11, 11.5, 14, 11, -11.5, 14, 11, 11.5, 14, 3.5, -11.5, 14, 11, -11.5, 14, 3.5, -11.5, -14, 3.5, -11.5, 14, 0.5, -9.5, 14, 0.5, 11.5, -14, 0.5, 11.5, 14, 11, 11.5, 14, 0.5, 11.5, 14, 3.5, -9.5, -14, 11, 11.5, 14, 0.5, 11.5, 14, 11, 11.5, 14, 3.5, -9.5, 14, 0.5, 11.5, 14, 0.5, -9.5, 14, 3.5, -11.5, 14, 0.5, -11.5, -14, 3.5, -11.5, -14, 11, -11.5, -14, 3.5, -9.5, -14, 0.5, 11.5, -14, 0.5, -11.5, 14, 0.5, -11.5, -14, 0.5, -9.5, -14, 0.5, -11.5, -14, 3.5, -11.5, 14, 0.5, -11.5, -14, 0.5, -9.5, 14, 0.5, -11.5, -14, 0.5, 11.5, -14, 11, 11.5, -14, 0.5, 11.5, 14, 0.5, 11.5, 14, 0.5, -11.5, 14, 0.5, -9.5, -14, 0.5, 11.5, -14, 0.5, -9.5, -14, 0.5, 11.5, -14, 3.5, -9.5, -14, 11, -11.5, -14, 3.5, -11.5, -14, 3.5, -9.5, 14, 11, -11.5, -14, 3.5, -11.5, -14, 11, -11.5, -14, 0.5, 11.5, -14, 11, 11.5, -14, 11, -11.5, -14, 3.5, -9.5, -14, 3.5, -11.5, -15, 3.5, -9.5, -14, 0.5, -11.5, -14, 0.5, -9.5, -15, 0.5, -11.5, -15, 3.5, -11.5, -15, 3.5, -9.5, -14, 3.5, -11.5, -15, 3.5, -9.5, -15, 0.5, -9.5, -14, 3.5, -9.5, -14, 3.5, -11.5, -14, 0.5, -11.5, -15, 3.5, -11.5, -14, 0.5, -9.5, -14, 3.5, -9.5, -15, 0.5, -9.5, -15, 0.5, -11.5, -15, 3.5, -11.5, -14, 0.5, -11.5, 15, 3.5, -9.5, 14, 0.5, -9.5, 15, 0.5, -9.5, -15, 0.5, -9.5, -15, 0.5, -11.5, -14, 0.5, -9.5, 15, 3.5, -9.5, 15, 3.5, -11.5, 14, 3.5, -9.5, 14, 3.5, -11.5, 14, 3.5, -9.5, 15, 3.5, -11.5, 15, 0.5, -9.5, 14, 0.5, -9.5, 14, 0.5, -11.5, 15, 0.5, -9.5, 14, 0.5, -11.5, 15, 0.5, -11.5, 14, 0.5, -11.5, 14, 3.5, -11.5, 15, 0.5, -11.5, 15, 3.5, -9.5, 14, 3.5, -9.5, 14, 0.5, -9.5, 15, 3.5, -11.5, 15, 0.5, -11.5, 14, 3.5, -11.5)
+backface_collision = true
 
 [node name="Kitchen" type="Node3D"]
 
@@ -40,6 +43,7 @@ process_physics_priority = 1
 layer = -1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,7 +58,7 @@ physics_object_picking = true
 size = Vector2i(1152, 648)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="UpgradeMenu" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("7_cetdd")]
 
@@ -84,11 +88,10 @@ near = 0.006
 environment = SubResource("Environment_23qos")
 
 [node name="Room" type="StaticBody3D" parent="."]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+visible = false
 operation = 1
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Room/CSGCombiner3D"]
@@ -101,13 +104,19 @@ operation = 2
 size = Vector3(28, 12, 23)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, -10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105957, 2, -10.5)
 operation = 2
-size = Vector3(3, 3, 2)
+size = Vector3(33.2119, 3, 2)
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
-shape = SubResource("ConcavePolygonShape3D_cetdd")
+shape = SubResource("ConcavePolygonShape3D_kr0tx")
+
+[node name="PlantingArea" parent="Room" instance=ExtResource("2_2cl3g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56515, 1, 7.54631)
+
+[node name="CarrotSeed" parent="Room" instance=ExtResource("3_4clir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22554, 2.78705, -0.986999)
 
 [node name="Player" parent="." instance=ExtResource("1_7u47w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04003, 2, 0.995445)

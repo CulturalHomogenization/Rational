@@ -83,6 +83,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494011, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68012, 0)
 billboard = 1
 text = "TEst"
-font_size = 50
+font_size = 75
 outline_size = 15
 script = ExtResource("2_kgeko")

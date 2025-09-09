@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://carev1j0wq462"]
+
+[ext_resource type="Script" uid="uid://cggj77wpand4q" path="res://Scenes/plantingarea.gd" id="1_3p74u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_urb8j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urb8j"]
+albedo_color = Color(0.438969, 0.282632, 0.116241, 1)
+
+[node name="PlantingArea" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_3p74u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_urb8j")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.489746, 0)
+size = Vector3(1, 0.0205078, 1)
+material = SubResource("StandardMaterial3D_urb8j")

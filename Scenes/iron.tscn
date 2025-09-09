@@ -14,6 +14,7 @@ physics_material_override = SubResource("PhysicsMaterial_lfcn5")
 continuous_cd = true
 script = ExtResource("1_lfcn5")
 id = "iron"
+item_name = "Iron"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_76jc4")
