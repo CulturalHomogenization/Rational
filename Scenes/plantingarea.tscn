@@ -8,7 +8,8 @@
 albedo_color = Color(0.438969, 0.282632, 0.116241, 1)
 
 [node name="PlantingArea" type="StaticBody3D"]
-collision_layer = 3
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_3p74u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

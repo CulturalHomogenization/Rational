@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bao4vfkn1220f"]
+[gd_scene load_steps=18 format=3 uid="uid://bao4vfkn1220f"]
 
 [ext_resource type="PackedScene" uid="uid://bb8352e6gs57s" path="res://Scenes/player.tscn" id="1_7u47w"]
 [ext_resource type="PackedScene" uid="uid://carev1j0wq462" path="res://Scenes/plantingarea.tscn" id="2_2cl3g"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d145t385yqba6" path="res://Scenes/upgrade_menu.tscn" id="7_cetdd"]
 [ext_resource type="PackedScene" uid="uid://pnyu6ositnse" path="res://Scenes/chopper.tscn" id="8_o8uib"]
 [ext_resource type="PackedScene" uid="uid://80sxp4aemelr" path="res://Scenes/carrot.tscn" id="9_kr0tx"]
+[ext_resource type="PackedScene" uid="uid://brkocdc24hca4" path="res://Scenes/oven.tscn" id="12_t5hpn"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfa8w"]
 
@@ -150,6 +151,9 @@ transform = Transform3D(1.0015, 0, 0, 0, 1.0015, 0, 0, 0, 1.0015, 1.22401, 2.119
 
 [node name="Carrot2" parent="." instance=ExtResource("9_kr0tx")]
 transform = Transform3D(1.003, 0, 0, 0, 1.003, 0, 0, 0, 1.003, -0.0459278, 3.04717, -0.00648412)
+
+[node name="Oven" parent="." instance=ExtResource("12_t5hpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365474, 1, -6.51763)
 
 [connection signal="pressed" from="CanvasLayer/SubViewportContainer/SubViewport/CanvasLayer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="interacted" from="TechStation" to="TechStation" method="_on_tech_station_interacted"]

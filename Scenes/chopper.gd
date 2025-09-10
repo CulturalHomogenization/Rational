@@ -2,13 +2,10 @@ extends Interactable
 
 @export var accepted_item_ids: Array[String] = [
 	"Carrot",
-	"Raw Potatoes", 
-	"Raw Onions",
-	"Raw Celery",
-	"Raw Mushrooms",
-	"Raw Tomatoes",
-	"Raw Herbs",
-	"Raw Garlic"
+	"Onion", 
+	"Potato",
+	"Tomato",
+	"Lettuce"
 ]
 @export var station_name: String = "Chopping Station"
 @export var chopping_time: float = 3.0

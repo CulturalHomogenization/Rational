@@ -53,7 +53,7 @@ func setup_plant_data():
 			"mesh_scene": "res://Scenes/carrot_plant.tscn",
 			"harvest_item": "Carrot",
 			"harvest_item_scene": "res://Scenes/carrot.tscn",
-			"seed_scene": "res://Scenesd/carrot_seed.tscn",
+			"seed_scene": "res://Scenes/carrot_seed.tscn",
 			"harvest_count": 2,
 			"seed_return": 3
 		}
@@ -218,24 +218,24 @@ func complete_harvest():
 
 
 func spawn_harvest_items():
-	var harvest_item = current_plant_type.get("harvest_item", "")
+	var harvest_item = current_plant_type.get("harvest_item_scene", "")
 	var harvest_count = current_plant_type.get("harvest_count", 1)
 	var seed_return = current_plant_type.get("seed_return", 1)
 	
 	# Spawn harvest items
 	for i in range(harvest_count):
-		spawn_item(harvest_item, global_position + Vector3(randf_range(-1, 1), 0.5, randf_range(-1, 1)))
+		spawn_item_from_scene(harvest_item, global_position + Vector3(randf_range(-1, 1), 1.5, randf_range(-1, 1)))
 	
 	# Spawn seeds
 	for i in range(seed_return):
-		spawn_item(planted_seed_id, global_position + Vector3(randf_range(-1, 1), 0.5, randf_range(-1, 1)))
+		spawn_item_from_scene(current_plant_type.get("seed_scene", ""), global_position + Vector3(randf_range(-1, 1), 1.5, randf_range(-1, 1)))
 
 func clear_dead_plant():
 	if current_state == PlantState.DEAD:
 		# Return fewer seeds for dead plant
 		var seed_return = max(1, current_plant_type.get("seed_return", 1) - 1)
 		for i in range(seed_return):
-			spawn_item(planted_seed_id, global_position + Vector3(randf_range(-1, 1), 0.5, randf_range(-1, 1)))
+			spawn_item_from_scene(planted_seed_id, global_position + Vector3(randf_range(-1, 1), 0.5, randf_range(-1, 1)))
 		
 		reset_plant()
 		print("Cleared dead plant")
@@ -257,9 +257,9 @@ func reset_plant():
 	update_interactions()
 
 # Spawn items using specific scene files
-func spawn_item_from_scene(scene_path: String, item_id: String, position: Vector3):
+func spawn_item_from_scene(scene_path: String, position: Vector3):
 	if scene_path == "":
-		print("Warning: No scene path provided for item: " + item_id)
+		print("Warning: No scene path provided for item")
 		return
 		
 	var item_scene = load(scene_path)
@@ -268,11 +268,6 @@ func spawn_item_from_scene(scene_path: String, item_id: String, position: Vector
 		return
 		
 	var item_instance = item_scene.instantiate()
-	
-	# Set the item properties
-	item_instance.id = item_id
-	if item_instance.has_property("item_name"):
-		item_instance.item_name = item_id.replace("_", " ").capitalize()
 	
 	item_instance.global_position = position
 	
@@ -290,7 +285,6 @@ func get_pressed_action() -> String:
 		var input_action = interaction_actions[action_id].get("input_action", "")
 		if input_action != "":
 			if action_id == "harvest":
-				# For harvest, return the action if button is pressed (held or just pressed)
 				if Input.is_action_pressed(input_action):
 					return action_id
 			else:
