@@ -81,7 +81,7 @@ func start_chopping(player, ingredient: Ingredient):
 		animation_player.play("chop")
 	
 	chopping_timer.start()
-	print("Started chopping " + ingredient.item_name)
+	info.show_message("Started chopping " + ingredient.item_name)
 
 func _on_chopping_finished():
 	if current_ingredient and current_ingredient.can_be_processed():
@@ -103,7 +103,7 @@ func _on_chopping_finished():
 	if animation_player:
 		animation_player.stop()
 	
-	print("Chopping finished!")
+	info.show_message("Chopping finished!")
 
 func spawn_processed_item():
 	var processed_item = current_ingredient.create_processed_item()

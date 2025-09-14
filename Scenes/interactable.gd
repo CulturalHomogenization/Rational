@@ -23,6 +23,8 @@ func get_prompt() -> String:
 		
 		if key_name != "":
 			prompt_lines.append(message + " [" + key_name + "]")
+		else:
+			prompt_lines.append(message)
 	
 	return "\n".join(prompt_lines)
 
