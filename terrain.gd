@@ -1,15 +1,9 @@
 @tool
 extends MeshInstance3D
 
-<<<<<<< Updated upstream
-const size := 256.0
-
-@export_range(4, 256, 4) var resolution := 32:
-=======
-const size := 5000.0
+const size := 500.0
 @onready var proton_scatter: Node3D = $ProtonScatter
 @export_range(4, 2506, 4) var resolution := 320:
->>>>>>> Stashed changes
 	set(new_resolution):
 		resolution = new_resolution
 		update_mesh()
@@ -17,18 +11,20 @@ const size := 5000.0
 @export var noise : FastNoiseLite:
 	set(new_noise):
 		noise = new_noise
+		for child in get_children():
+			if child is StaticBody3D:
+				child.queue_free()
 		update_mesh()
 		if noise:
 			noise.changed.connect(update_mesh)
 
-<<<<<<< Updated upstream
-@export_range(4.0, 128.0, 4.0) var height := 64.0:
-=======
-@export_range(4.0, 2048.0, 4.0) var height := 2048.0:
->>>>>>> Stashed changes
+@export_range(4.0, 128.0, 4.0) var height := 32.0:
 	set(new_height):
 		height = new_height
 		update_mesh()
+		create_trimesh_collision()
+
+
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y) * height
@@ -41,6 +37,12 @@ func get_normal(x: float, y: float) -> Vector3:
 		(get_height(x, y + epilson) - get_height(x, y - epilson)) / (2.0 * epilson)
 	)
 	return normal.normalized()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("test"):
+		noise.seed = randi_range(0, 10000)
+		proton_scatter.enabled = false
+		proton_scatter.enabled = true
 
 func update_mesh() -> void:
 	var plane := PlaneMesh.new()
@@ -70,3 +72,13 @@ func update_mesh() -> void:
 	var array_mesh := ArrayMesh.new()
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, plane_arrays)
 	mesh = array_mesh
+	for child in get_children():
+		if child is StaticBody3D:
+			child.queue_free()
+	create_trimesh_collision()
+
+
+func _on_ready() -> void:
+	for child in get_children():
+			if child is StaticBody3D:
+				child.queue_free()

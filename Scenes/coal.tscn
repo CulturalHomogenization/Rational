@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkafrr4m0ddkx"]
+
+[ext_resource type="Script" uid="uid://6ypqtkj4x3a5" path="res://Scenes/coal.gd" id="1_x6f8n"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4v3ac"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4v3ac"]
+radius = 0.260754
+
+[node name="Coal" type="RigidBody3D" groups=["pickup"]]
+collision_layer = 3
+mass = 80.0
+physics_material_override = SubResource("PhysicsMaterial_4v3ac")
+inertia = Vector3(1, 1, 1)
+can_sleep = false
+continuous_cd = true
+script = ExtResource("1_x6f8n")
+id = "Coal"
+item_name = "Coal"
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4v3ac")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

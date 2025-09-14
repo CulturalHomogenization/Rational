@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dph3kfrsy2by5"]
+
+[ext_resource type="Script" uid="uid://bdjqyyf2avgch" path="res://Junk.gd" id="1_8jj6o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8jj6o"]
+height = 0.8
+radius = 0.2
+
+[node name="Junk" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+continuous_cd = true
+script = ExtResource("1_8jj6o")
+id = "Junk"
+item_name = "Junk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_8jj6o")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.391498, 0, 0, 0, -1.71129e-08, 0.391498, 0, -0.391498, -1.71129e-08, 0, 0, 0)

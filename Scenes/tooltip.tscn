@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuiili2htwoy7"]
+
+[ext_resource type="Script" uid="uid://dnglmhhupd40h" path="res://Scenes/tooltip.gd" id="1_617o6"]
+[ext_resource type="Texture2D" uid="uid://6d6ffhtethkp" path="res://icon.svg" id="1_ogi1g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_617o6"]
+bg_color = Color(0.173501, 0.000326423, 0.425263, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[node name="ToolTip" type="PanelContainer"]
+top_level = true
+z_index = 8
+custom_minimum_size = Vector2(80, 50)
+offset_right = 93.0
+offset_bottom = 50.0
+scale = Vector2(1.00235, 1)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_617o6")
+script = ExtResource("1_617o6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Title"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_ogi1g")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Title"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Upgrade Title"
+autowrap_mode = 2
+
+[node name="Description" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Description"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel tempor est, quis hendrerit purus."
+autowrap_mode = 2
+
+[node name="Requirements" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Requirements"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+text = "Requires :
+17 diamonds
+15 coal
+23 slices of pie"
+autowrap_mode = 2
+
+[node name="Research" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Research"]
+layout_mode = 2
+texture = ExtResource("1_ogi1g")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Research"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Research Level 3"
+autowrap_mode = 2

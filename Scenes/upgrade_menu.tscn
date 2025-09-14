@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d145t385yqba6"]
+
+[ext_resource type="Script" uid="uid://bkelg28ldv1r2" path="res://Scenes/upgrade_menu.gd" id="1_6gn5s"]
+[ext_resource type="PackedScene" uid="uid://dw6i3j06ujwui" path="res://Scenes/upgrade.tscn" id="1_ltp0x"]
+[ext_resource type="Script" uid="uid://dgo1bujf885d1" path="res://Scenes/camera_2d.gd" id="2_11363"]
+
+[node name="UpgradeMenu" type="Node2D"]
+script = ExtResource("1_6gn5s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, 145)
+script = ExtResource("2_11363")
+
+[node name="16" parent="." instance=ExtResource("1_ltp0x")]
+offset_left = -399.0
+offset_top = -86.0
+offset_right = -399.0
+offset_bottom = -86.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Upgrade" parent="." instance=ExtResource("1_ltp0x")]
+offset_left = 339.72
+offset_top = 289.0
+offset_right = 339.72
+offset_bottom = 289.0
+grow_horizontal = 1
+grow_vertical = 1
+upgrade_id = 17

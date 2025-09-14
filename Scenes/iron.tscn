@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0lvxfn5pdw24"]
+
+[ext_resource type="Script" uid="uid://c6m4c0bbqdwhy" path="res://Scenes/iron.gd" id="1_lfcn5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lfcn5"]
+friction = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_76jc4"]
+
+[node name="Iron" type="RigidBody3D" groups=["pickup"]]
+collision_layer = 3
+mass = 80.0
+physics_material_override = SubResource("PhysicsMaterial_lfcn5")
+continuous_cd = true
+script = ExtResource("1_lfcn5")
+id = "iron"
+item_name = "Iron"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_76jc4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

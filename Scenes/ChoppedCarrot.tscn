@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2jk7wg6vaarj"]
+
+[ext_resource type="Script" uid="uid://bat4efoxmq6ve" path="res://Scenes/chopped_carrot.gd" id="1_er3xk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrkav"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="ChoppedCarrot" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+script = ExtResource("1_er3xk")
+id = "Chopped Carrot"
+item_name = "Chopped Carrot"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.201206, 0, 0, 0, 0.201206, 0, 0, 0, 0.201206, 0, 0, 0)
+layers = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mrkav")

@@ -1,0 +1,92 @@
+[gd_scene load_steps=17 format=3 uid="uid://bqy4n0ks8ui12"]
+
+[ext_resource type="Script" uid="uid://r85njchsj0bh" path="res://addons/proton_scatter/src/scatter.gd" id="1_8tbis"]
+[ext_resource type="Script" uid="uid://du4yfs17ofm84" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_gxmxd"]
+[ext_resource type="Script" uid="uid://l0r66uyewowy" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="3_d6agx"]
+[ext_resource type="Script" uid="uid://djupc3n4ehe5t" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="4_q26mo"]
+[ext_resource type="Script" uid="uid://82wv7g56qt33" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="5_277oh"]
+[ext_resource type="Script" uid="uid://cigjnpsipe26t" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="6_spruh"]
+[ext_resource type="Script" uid="uid://d28bfq2psxawo" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="7_pmc67"]
+[ext_resource type="Script" uid="uid://cgwo2qygquhae" path="res://addons/proton_scatter/src/scatter_shape.gd" id="8_mhnkp"]
+[ext_resource type="Script" uid="uid://k366hnp62byt" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="9_kqsjj"]
+[ext_resource type="Script" uid="uid://dgmkrfcjcvh3x" path="res://addons/proton_scatter/src/scatter_item.gd" id="10_rass3"]
+
+[sub_resource type="Resource" id="Resource_8tbis"]
+script = ExtResource("4_q26mo")
+amount = 1200
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_gxmxd"]
+script = ExtResource("5_277oh")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(10, 360, 10)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_d6agx"]
+script = ExtResource("6_spruh")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_q26mo"]
+script = ExtResource("7_pmc67")
+ray_direction = Vector3(0, -5, 0)
+ray_length = 20.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_277oh"]
+script = ExtResource("2_gxmxd")
+stack = Array[ExtResource("3_d6agx")]([SubResource("Resource_8tbis"), SubResource("Resource_gxmxd"), SubResource("Resource_d6agx"), SubResource("Resource_q26mo")])
+
+[sub_resource type="Resource" id="Resource_7glc7"]
+script = ExtResource("9_kqsjj")
+size = Vector3(50, 50, 50)
+metadata/_custom_type_script = "uid://k366hnp62byt"
+
+[node name="ScatterChunk" type="Node3D"]
+script = ExtResource("1_8tbis")
+modifier_stack = SubResource("Resource_277oh")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://r85njchsj0bh"
+
+[node name="ScatterShape" type="Node3D" parent="."]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25, 0, 25)
+script = ExtResource("8_mhnkp")
+shape = SubResource("Resource_7glc7")
+
+[node name="ScatterTree" type="Node3D" parent="."]
+script = ExtResource("10_rass3")
+path = "uid://bhums0j31gm5n"
+metadata/_custom_type_script = "uid://dgmkrfcjcvh3x"
+
+[node name="ScatterStone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("10_rass3")
+path = "uid://bltmr2xgs8nq1"
+metadata/_custom_type_script = "uid://dgmkrfcjcvh3x"

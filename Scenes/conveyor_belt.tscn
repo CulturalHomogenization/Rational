@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://24fa22jdgssc"]
+
+[ext_resource type="Script" uid="uid://3s636fj8dbiy" path="res://Scenes/ConveyorBelt.gd" id="1_xgy6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4h2y"]
+size = Vector3(33.0141, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgy6c"]
+size = Vector3(32.9428, 0.622559, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_xgy6c"]
+
+[node name="ConveyorBelt" type="StaticBody3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6976, 0, 0)
+size = Vector3(32.8952, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7591, 0, 0)
+shape = SubResource("BoxShape3D_u4h2y")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+script = ExtResource("1_xgy6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7211, 0.730583, 0)
+shape = SubResource("BoxShape3D_xgy6c")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392319, 1.28364, 0.314433)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Delete Item" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Delete Item"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0041, -4.30368, 0)
+shape = SubResource("WorldBoundaryShape3D_xgy6c")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="Area3D" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Delete Item" to="Area3D" method="_on_delete_item_body_entered"]
