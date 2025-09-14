@@ -14,12 +14,13 @@ extends Interactable
 @onready var item_position: Marker3D = $Item
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var chopping_timer: Timer = $ChoppingTimer
-@onready var info: Label3D = $Info
+@onready var info: Label = $Control/Info
 
 var is_chopping: bool = false
 var current_ingredient: Ingredient = null
 
 func _ready() -> void:
+	info.setup(self)
 	interaction_actions = {
 		"Insert Item": {
 			"message": "Chop Ingredient",
