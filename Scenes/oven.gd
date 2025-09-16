@@ -1,34 +1,29 @@
 extends Interactable
 
 @export var accepted_item_ids: Array[String] = [
-	"Chopped Carrot",
-	"Chopped Onions", 
-	"Chopped Potatoes",
-	"Chopped Mushrooms",
-	"Chopped Tomatoes",
-	"Chopped Herbs",
-	"Salt",
-	"Pepper",
-	"Oil",
-	"Flour",
-	"Milk",
-	"Butter"
+	"dough",
+	"chopped_tomato",
+	"chopped_meat",
+	"spices",
+	"berries"
 ]
 @export var station_name: String = "Cooking Station"
-@export var cooking_time: float = 15.0
-
+@export var cooking_time: float = 1.0
+@onready var info: Label3D = $Info
+@onready var item_spawn: Marker3D = $ItemSpawn
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var recipes: Array[Dictionary] = [
 	{
-		"ingredients": ["Chopped Carrot"],
-		"result": "Carrot Soup"
+		"ingredients": ["dough"],
+		"result": "HardTack Cracker"
 	},
 	{
-		"ingredients": ["Chopped Potatoes", "Chopped Mushrooms", "Pepper"],
-		"result": "Mushroom Stew"
+		"ingredients": ["dough", "chopped_tomato", "spices", "chopped_meat"],
+		"result": "Pizza"
 	},
 	{
-		"ingredients": ["Chopped Tomatoes", "Chopped Herbs", "Oil"],
-		"result": "Tomato Sauce"
+		"ingredients": ["dough", "berries"],
+		"result": "Protein Bar"
 	}
 ]
 
@@ -76,7 +71,7 @@ func update_interactions():
 		CookingState.READY:
 			interaction_actions = {
 				"Harvest": {
-					"message": "Harvest (Bowl Required)",
+					"message": "Harvest",
 					"input_action": "interact"
 				}
 			}
@@ -92,36 +87,36 @@ func _on_cooking_station_interacted(player, action_id: String):
 
 func attempt_store_item(player):
 	if not player.held_item:
-		print("No item to store")
+		info.show_message("No item to store")
 		return
 	
 	var item_id = player.held_item.id
 	
 	if item_id not in accepted_item_ids:
-		print("This station doesn't accept " + item_id)
+		info.show_message("This item is not accepted")
 		return
 	
 	if item_id in inventory:
-		print("This ingredient is already stored")
+		info.show_message("This ingredient is already stored")
 		return
 	
 	inventory.append(item_id)
 	player.held_item.queue_free()
 	player.held_item = null
 	
-	print("Stored " + item_id + ". Ingredients: " + str(inventory))
+	info.show_message("Stored " + item_id + ". Ingredients: " + str(inventory))
 
 func attempt_start_cooking():
 	if current_state != CookingState.IDLE:
 		return
 	
 	if inventory.is_empty():
-		print("No ingredients to cook")
+		info.show_message("No ingredients to cook")
 		return
 	
 	var recipe_result = find_matching_recipe()
 	if recipe_result == "":
-		print("No recipe matches these ingredients: " + str(inventory))
+		info.show_message("No recipe matches these ingredients: " + str(inventory))
 		return
 	
 	start_cooking(recipe_result)
@@ -141,34 +136,29 @@ func find_matching_recipe() -> String:
 		
 		if matches:
 			return recipe["result"]
-	
+	info.show_message("No recipes match stored ingredients")
 	return ""
 
 func start_cooking(result: String):
 	current_state = CookingState.COOKING
 	cooked_result = result
 	inventory.clear()
+	animation_player.play("bake")
 	
 	update_interactions()
 	cooking_timer.start()
 	
-	print("Started cooking " + result)
+	info.show_message("Started cooking " + result)
 
 func _on_cooking_finished():
 	current_state = CookingState.READY
 	update_interactions()
-	print("Cooking finished! " + cooked_result + " is ready")
+	info.show_message("Cooking finished! " + cooked_result + " is ready")
+	animation_player.play("RESET")
 
 func attempt_harvest(player):
 	if current_state != CookingState.READY:
 		return
-	
-	if not player.held_item or player.held_item.id != "bowl":
-		print("You need a bowl to harvest the food")
-		return
-	
-	player.held_item.queue_free()
-	player.held_item = null
 	
 	spawn_cooked_food()
 	
@@ -177,7 +167,7 @@ func attempt_harvest(player):
 	update_interactions()
 
 func spawn_cooked_food():
-	var item_instance = ItemManager.spawn_item(cooked_result, global_position + Vector3(0, 1, 0))
+	var item_instance = ItemManager.spawn_item(cooked_result, item_spawn.global_position)
 	if item_instance:
 		get_tree().current_scene.add_child(item_instance)
 		print("Harvested " + cooked_result)

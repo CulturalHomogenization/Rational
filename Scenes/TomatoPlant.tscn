@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn3kaywgrs3t3"]
+
+[ext_resource type="PackedScene" uid="uid://b2s2sg5yq2cky" path="res://gltbf_exports/tomato_plant.glb" id="1_155ll"]
+
+[node name="TomatoPlant" type="MeshInstance3D"]
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_155ll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.200736, -0.299088)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_155ll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.200736, 0.438833)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmvlar8sq7caa"]
+
+[ext_resource type="PackedScene" uid="uid://bl1ctegtk5dge" path="res://gltbf_exports/wheat_plant.glb" id="1_esyca"]
+
+[node name="CarrotPlant" type="MeshInstance3D"]
+
+[node name="wheat_plant2" parent="." instance=ExtResource("1_esyca")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.192963, -0.0232662, 0.531995)
+
+[node name="wheat_plant3" parent="." instance=ExtResource("1_esyca")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="wheat_plant4" parent="." instance=ExtResource("1_esyca")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.34677, 0, 0.291654)
+
+[node name="wheat_plant5" parent="." instance=ExtResource("1_esyca")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -0.42485, 0, -0.183719)
+
+[node name="wheat_plant6" parent="." instance=ExtResource("1_esyca")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.37892, 0, -0.257207)

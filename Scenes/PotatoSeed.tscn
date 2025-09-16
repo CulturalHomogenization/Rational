@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7odsl7fyx7d"]
+
+[ext_resource type="Script" uid="uid://4070omoesfvb" path="res://carrot_seed.gd" id="1_cbeyd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dibno"]
+
+[node name="PotatoSeed" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+script = ExtResource("1_cbeyd")
+id = "potato_seed"
+item_name = "Potato Seed"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.35401, 0, 0, 0, 0.35401, 0, 0, 0, 0.35401, 0, 0, 0)
+shape = SubResource("BoxShape3D_dibno")

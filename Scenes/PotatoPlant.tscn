@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=4 uid="uid://cxv1uonh2soql"]
+
+[ext_resource type="Material" uid="uid://c4mot1fo3siox" path="res://addons/proton_scatter/demos/assets/materials/m_grass.tres" id="2_ha8gu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7k72"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xl86u"]
+_surfaces = [{
+"aabb": AABB(-0.197965, -0.0633441, -0.122753, 0.456958, 0.609951, 0.201694),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAAACAAQABAACAAUABAAFAAYABwAIAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("hpEPYwCcAADXSo6DvbcAAEZnhbrWlAAAB20AAM2bAAD+zgqnP3wAADaL//+bOwAA//+j2gAAAAB9dDQN6ZgAAAAAuI7//wAAT4JEuqfcAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hj2hj"]
+resource_name = "grass_2_Plane_002"
+_surfaces = [{
+"aabb": AABB(-0.197965, -0.0633441, -0.122753, 0.456958, 0.609951, 0.201694),
+"attribute_data": PackedByteArray("edUozWq6wbxMxQShgMcn/wHt2aoO0/N9//8oj12o///4fD+Osc0Afg=="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAAACAAQABAACAAUABAAFAAYABwAIAAkA"),
+"material": SubResource("StandardMaterial3D_j7k72"),
+"primitive": 3,
+"uv_scale": Vector4(2.07088, 2.0966, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("hpEPYwCcf4bXSo6DvbfjiEZnhbrWlOaKB20AAM2bNIb+zgqnP3xdjjaL//+bOzaT//+j2gAAnJd9dDQN6ZiWjAAAuI7//5aMT4JEuqfclowVj/kNkZ+RHOTFFkCFZH8dJ8Y4QpXLhEVFxXg/kSe6JZEnuiWRJ7ol")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xl86u")
+
+[node name="OnionPlant" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936978, 0, 0)
+
+[node name="Grass5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.747567, 0, -0.526607)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409239, 0, 0.39053)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")
+
+[node name="Grass2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.928965, 0, -0.370168, 0, 1, 0, 0.370168, 0, -0.928965, 0.379877, 0, 0.683937)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")
+
+[node name="Grass3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0640965, 0, 0)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")
+
+[node name="Grass4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463641, 0, -0.565919)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")
+
+[node name="Grass6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.310421, 0, -0.22431)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")
+
+[node name="Grass7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.374517, 0, 0.37033)
+visibility_range_end = 100.0
+mesh = SubResource("ArrayMesh_hj2hj")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_ha8gu")

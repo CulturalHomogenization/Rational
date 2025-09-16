@@ -35,6 +35,7 @@ extends Interactable
 
 @export var station_name: String = "Storage"
 var stored_items : Array[String] = []
+@onready var info: Label3D = $Info
 
 func _ready() -> void:
 	interaction_actions = {
@@ -65,4 +66,4 @@ func _on_tech_station_interacted(player, action_id: String):
 				stored_items.append(player.held_item.id)
 				player.held_item = null
 			else:
-				print("This station doesn't accept that item")
+				info.show_message("That is not an upgrade item!")

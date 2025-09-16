@@ -1,4 +1,4 @@
-extends Label
+extends Label3D
 
 @export var show_duration: float = 1.0
 @export var fade_duration: float = 0.5
@@ -12,7 +12,6 @@ var camera: Camera3D
 func _ready():
 	modulate.a = 0.0
 	visible = false
-	z_index = 1000
 	
 	show_timer = Timer.new()
 	add_child(show_timer)
@@ -26,11 +25,9 @@ func setup(station: Node3D):
 	target_node = station
 
 func show_message(message: String):
+	print("Showing Message")
 	text = message
 	visible = true
-	
-	if target_node and camera:
-		update_position()
 	
 	if fade_tween:
 		fade_tween.kill()
@@ -40,28 +37,6 @@ func show_message(message: String):
 	
 	show_timer.start()
 
-func _process(delta):
-	if visible and target_node and camera:
-		update_position()
-
-func update_position():
-	var world_pos = target_node.global_position + world_offset
-	
-	var camera_transform = camera.global_transform
-	var to_point = world_pos - camera_transform.origin
-	if to_point.dot(-camera_transform.basis.z) < 0:
-		visible = false
-		return
-	
-	visible = true
-	
-	var screen_pos = camera.unproject_position(world_pos)
-	
-	position = screen_pos - size / 2
-	
-	var screen_size = get_viewport().get_visible_rect().size
-	position.x = clamp(position.x, 0, screen_size.x - size.x)
-	position.y = clamp(position.y, 0, screen_size.y - size.y)
 
 func _start_fade():
 	if fade_tween:

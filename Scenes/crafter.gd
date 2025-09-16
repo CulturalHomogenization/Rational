@@ -2,6 +2,7 @@ extends Interactable
 
 @export var station_name: String = "Crafting Station"
 @export var crafting_time: float = 10.0
+@onready var info: Label3D = $Info
 
 @export var craftable_items: Array[Dictionary] = [
 	{
@@ -117,7 +118,7 @@ func _on_craft_button_pressed():
 	if can_craft_item(selected_recipe):
 		start_crafting()
 	else:
-		print("Missing ingredients for " + selected_recipe["name"])
+		info.show_message("Missing ingredients for " + selected_recipe["name"])
 
 func _on_close_button_pressed():
 	crafting_menu.visible = false
@@ -133,7 +134,7 @@ func start_crafting():
 	update_interactions()
 	crafting_timer.start()
 	
-	print("Started crafting " + selected_recipe["name"])
+	info.show_message("Started crafting " + selected_recipe["name"])
 
 func _on_crafting_finished():
 	var result_item = selected_recipe["name"]
@@ -143,12 +144,12 @@ func _on_crafting_finished():
 	selected_recipe = {}
 	
 	update_interactions()
-	print("Crafting finished!")
+	info.show_message("Crafting finished!")
 
 func spawn_crafted_item(item_id: String):
 	var item_instance = ItemManager.spawn_item(item_id, global_position + Vector3(0, 1, 0))
 	if item_instance:
 		get_tree().current_scene.add_child(item_instance)
-		print("Crafted " + item_id)
+		info.show_message("Crafted " + item_id)
 	else:
 		print("Failed to spawn " + item_id)

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED := 5.0
+const SPEED := 7.0
 const TURN_SPEED := 8.0
 const GRAVITY := 20.0
 

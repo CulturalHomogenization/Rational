@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://du33n8n8ml07t"
+path.s3tc="res://.godot/imported/luxury_stew_1_SOPA_baseColor.jpg-6eb2eb1ef40fbf8b526d5b3356db089b.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "6ec7a4577b025c1898ba448a7037992f"
+}
+
+[deps]
+
+source_file="res://gltbf_exports/luxury_stew_1_SOPA_baseColor.jpg"
+dest_files=["res://.godot/imported/luxury_stew_1_SOPA_baseColor.jpg-6eb2eb1ef40fbf8b526d5b3356db089b.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

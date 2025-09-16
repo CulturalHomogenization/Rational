@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqglij3d65thw"]
+
+[ext_resource type="Script" uid="uid://bttbm8hl18frq" path="res://Scenes/ingredient.gd" id="1_ulaop"]
+[ext_resource type="PackedScene" uid="uid://ccj8o1qbg4ri4" path="res://gltbf_exports/luxury_stew_1.glb" id="2_g4ymm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fua7y"]
+height = 0.375854
+
+[node name="LuxStew" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+script = ExtResource("1_ulaop")
+id = "lux_stew"
+item_name = "Luxury Survival Stew"
+
+[node name="luxury_stew_1" parent="." instance=ExtResource("2_g4ymm")]
+transform = Transform3D(3.47766, 0, 0, 0, 3.47766, 0, 0, 0, 3.47766, 0.0361549, 0, 0.0438528)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154724, 0)
+shape = SubResource("CylinderShape3D_fua7y")

@@ -1,21 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://6w0kmgtxep2k"]
+[gd_scene load_steps=5 format=3 uid="uid://6w0kmgtxep2k"]
 
 [ext_resource type="Script" uid="uid://c1tcl8mgcd5mu" path="res://Scenes/tech_station.gd" id="1_lsnmk"]
+[ext_resource type="PackedScene" uid="uid://btqb7t11glwqt" path="res://gltbf_exports/science_research_table.glb" id="2_teiww"]
+[ext_resource type="Script" uid="uid://b5ekdijjme27n" path="res://Scenes/stationlabel.gd" id="3_ffdsg"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gb3lo"]
-data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
-backface_collision = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_teiww"]
+size = Vector3(3.05573, 1.70624, 1.1814)
 
 [node name="TechStation" type="StaticBody3D"]
 script = ExtResource("1_lsnmk")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0422292, 0.746429, 0.506798)
-size = Vector3(0.297363, 0.154724, 0.160904)
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_teiww")]
+transform = Transform3D(1.74627, 0, 0, 0, 1.74627, 0, 0, 0, 1.74627, 0.0341469, 0, 0.288118)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0333557, 0.847565, 0.338501)
+shape = SubResource("BoxShape3D_teiww")
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("ConcavePolygonShape3D_gb3lo")
+[node name="Info" type="Label3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 2.14626, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+font_size = 24
+script = ExtResource("3_ffdsg")

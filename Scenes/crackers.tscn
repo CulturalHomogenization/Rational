@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cilvi2nou8bj5"]
+
+[ext_resource type="Script" uid="uid://bttbm8hl18frq" path="res://Scenes/ingredient.gd" id="1_is8us"]
+[ext_resource type="PackedScene" uid="uid://biol7auhm0dyp" path="res://gltbf_exports/cracker.glb" id="2_is8us"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_is8us"]
+size = Vector3(0.330078, 0.148926, 0.323364)
+
+[node name="Crackers" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+script = ExtResource("1_is8us")
+id = "crackers"
+item_name = "Crackers"
+
+[node name="cracker2" parent="." instance=ExtResource("2_is8us")]
+transform = Transform3D(0.141734, 0, 0, 0, 0.141734, 0, 0, 0, 0.141734, -0.0147371, 0, -0.00409603)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0185547, 0.0617676, -0.00360107)
+shape = SubResource("BoxShape3D_is8us")

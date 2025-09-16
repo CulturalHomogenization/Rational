@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://67nj8rvdq01i"]
+
+[ext_resource type="Script" uid="uid://4070omoesfvb" path="res://carrot_seed.gd" id="1_7f58b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dibno"]
+
+[node name="LettuceSeed" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+script = ExtResource("1_7f58b")
+id = "lettuce_seed"
+item_name = "Lettuce Seed"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.35401, 0, 0, 0, 0.35401, 0, 0, 0, 0.35401, 0, 0, 0)
+shape = SubResource("BoxShape3D_dibno")

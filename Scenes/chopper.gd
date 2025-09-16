@@ -7,7 +7,8 @@ extends Interactable
 	"lettuce",
 	"dough",
 	"meat",
-	"fish"
+	"fish",
+	"tomato"
 ]
 
 @export var station_name: String = "Chopping Station"
@@ -16,18 +17,19 @@ extends Interactable
 # Simple item processing dictionary: input_item -> processed_scene
 @export var item_processing: Dictionary = {
 	"carrot": preload("res://Scenes/ChoppedCarrot.tscn"),
-	#"onion": preload("res://Scenes/ChoppedOnion.tscn"),
-	#"potato": preload("res://Scenes/ChoppedPotato.tscn"),
-	#"lettuce": preload("res://Scenes/ChoppedLettuce.tscn"),
-	#"dough": preload("res://Scenes/ChoppedDough.tscn"),
-	#"meat": preload("res://Scenes/ChoppedMeat.tscn"),
-	#"fish": preload("res://Scenes/ChoppedFish.tscn")
+	"onion": preload("res://Scenes/ChoppedOnion.tscn"),
+	"potato": preload("res://Scenes/ChoppedPotato.tscn"),
+	"lettuce": preload("res://Scenes/ChoppedLettuce.tscn"),
+	"dough": preload("res://Scenes/noodles.tscn"),
+	"meat": preload("res://Scenes/ChoppedMeat.tscn"),
+	"fish": preload("res://Scenes/ChoppedFish.tscn"),
+	"tomato": preload("res://Scenes/ChoppedTomato.tscn")
 }
 
 @onready var spawn_point: Marker3D = $SpawnPoint
 @onready var item_position: Marker3D = $Item
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var info: Label = $Control/Info
+@onready var info: Label3D = $Info
 
 var processing_queue: Array[String] = []
 var is_processing: bool = false

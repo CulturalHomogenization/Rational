@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ct7mm3sofos8e"
+path.s3tc="res://.godot/imported/vegetable_packet_Image_2.png-53984aec969b786d7ba92f3efbb2b6d0.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "9ff32f6fab46a5ad18e5f9acd7003142"
+}
+
+[deps]
+
+source_file="res://gltbf_exports/vegetable_packet_Image_2.png"
+dest_files=["res://.godot/imported/vegetable_packet_Image_2.png-53984aec969b786d7ba92f3efbb2b6d0.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Scenes/gltbf_exports/vegetable_packet_Image_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

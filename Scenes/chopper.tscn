@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bqvrl2us8jqmq" path="res://Scenes/chopper.gd" id="1_5u0q5"]
 [ext_resource type="Script" uid="uid://b5ekdijjme27n" path="res://Scenes/stationlabel.gd" id="2_kgeko"]
-[ext_resource type="Texture2D" uid="uid://cdkm4hppbf3g6" path="res://assets/gltbf_exports/Slicer-1_Material.png" id="3_lnx5k"]
 
 [sub_resource type="Animation" id="Animation_lnx5k"]
 length = 0.001
@@ -202,6 +201,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7dew4")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kgeko"]
+load_path = "res://.godot/imported/Slicer-1_Material.png-6b62d010eff81b6f6f614c7ebb4747a3.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltmil"]
 resource_name = "metal_table"
 cull_mode = 2
@@ -209,7 +211,7 @@ albedo_color = Color(0.474991, 0.474991, 0.474991, 1)
 metallic = 0.541098
 roughness = 0.225836
 normal_enabled = true
-normal_texture = ExtResource("3_lnx5k")
+normal_texture = SubResource("CompressedTexture2D_kgeko")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0jfrm"]
 _surfaces = [{
@@ -1017,42 +1019,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68764, 0.935191, 0)
 [node name="Item" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1008, 1.23072, 0)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Info" type="Label" parent="Control"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 15
-text = "sadadsa"
-horizontal_alignment = 1
-script = ExtResource("2_kgeko")
-
 [node name="ChopperMesh" type="Node3D" parent="."]
 transform = Transform3D(0.135086, 0, 0, 0, 0.135086, 0, 0, 0, 0.135086, -0.196065, -1.22419, 0)
 
@@ -1169,3 +1135,12 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.25144, 0, 0, 0, 2.25144, 0, 0, 0, 2.25144, 0.0413987, 0.558746, 0)
 shape = SubResource("BoxShape3D_lnx5k")
+
+[node name="Info" type="Label3D" parent="."]
+transform = Transform3D(0.169763, 0, 0, 0, 0.169763, 0, 0, 0, 0.169763, -0.0165946, 2.41767, 0.00106096)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "TEst"
+font_size = 24
+script = ExtResource("2_kgeko")

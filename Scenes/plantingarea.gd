@@ -13,7 +13,7 @@ enum PlantState {
 @export var plant_data: Dictionary = {} # Will store plant types with their properties
 @export var harvest_hold_time: float = 3.0
 @export var water_timeout: float = 60.0
-@export var growth_time: float = 60.0 # Total time to grow when not waiting for water
+@export var growth_time: float = 5.0 # Total time to grow when not waiting for water
 
 # Current plant state
 var current_state: PlantState = PlantState.EMPTY
@@ -49,13 +49,58 @@ func _process(delta):
 func setup_plant_data():
 	plant_data = {
 		"carrot_seed": {
-			"name": "Carrot",
-			"mesh_scene": "res://Scenes/carrot_plant.tscn",
+			"name": "carrot",
+			"mesh_scene": "res://Scenes/CarrotPlant.tscn",
 			"harvest_item": "Carrot",
-			"harvest_item_scene": "res://Scenes/carrot.tscn",
-			"seed_scene": "res://Scenes/carrot_seed.tscn",
-			"harvest_count": 2,
-			"seed_return": 3
+			"harvest_item_scene": "res://Scenes/CarrotSack.tscn",
+			"seed_scene": "res://Scenes/CarrotSeed.tscn",
+			"harvest_count": 1,
+			"seed_return": 1
+		},
+		"potato_seed": {
+			"name": "potato",
+			"mesh_scene": "res://Scenes/PotatoPlant.tscn",
+			"harvest_item": "Potato",
+			"harvest_item_scene": "res://Scenes/PotatoSack.tscn",
+			"seed_scene": "res://Scenes/PotatoSeed.tscn",
+			"harvest_count": 1,
+			"seed_return": 1
+		},
+		"onion_seed": {
+			"name": "onion",
+			"mesh_scene": "res://Scenes/OnionPlant.tscn",
+			"harvest_item": "Onion",
+			"harvest_item_scene": "res://Scenes/OnionSack.tscn",
+			"seed_scene": "res://Scenes/OnionSeed.tscn",
+			"harvest_count": 1,
+			"seed_return": 1
+		},
+		"wheat_seed": {
+			"name": "wheat",
+			"mesh_scene": "res://Scenes/WheatPlant.tscn",
+			"harvest_item": "Wheat",
+			"harvest_item_scene": "res://Scenes/WheatSack.tscn",
+			"seed_scene": "res://Scenes/WheatSeed.tscn",
+			"harvest_count": 1,
+			"seed_return": 1
+		},
+		"lettuce_seed": {
+			"name": "lettuce",
+			"mesh_scene": "res://Scenes/LettucePlant.tscn",
+			"harvest_item": "Lettuce",
+			"harvest_item_scene": "res://Scenes/LettuceSack.tscn",
+			"seed_scene": "res://Scenes/LettuceSeed.tscn",
+			"harvest_count": 1,
+			"seed_return": 1
+		},
+		"tomato_seed": {
+			"name": "tomato",
+			"mesh_scene": "res://Scenes/TomatoPlant.tscn",
+			"harvest_item": "Tomato",
+			"harvest_item_scene": "res://Scenes/TomatoSack.tscn",
+			"seed_scene": "res://Scenes/TomatoSeed.tscn",
+			"harvest_count": 1,
+			"seed_return": 1
 		}
 	}
 

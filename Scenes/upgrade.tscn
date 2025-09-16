@@ -1,14 +1,15 @@
 [gd_scene load_steps=29 format=3 uid="uid://dw6i3j06ujwui"]
 
-[ext_resource type="Texture2D" uid="uid://bbjd8cm7fcp8h" path="res://assets/Placeholders/models/textures/Dry Gouache.png" id="2_d2ffm"]
 [ext_resource type="Script" uid="uid://bxhwa605i2gee" path="res://Scenes/upgrade.gd" id="2_o0s84"]
 [ext_resource type="Script" uid="uid://vua2082yjhmk" path="res://Scenes/upgrade_area.gd" id="4_d2ffm"]
 [ext_resource type="Texture2D" uid="uid://6d6ffhtethkp" path="res://icon.svg" id="4_nxtxw"]
 [ext_resource type="Texture2D" uid="uid://ug5kw3wilji1" path="res://assets/Upgrade Icons/Plants16-30.webp" id="4_uudjn"]
 [ext_resource type="Script" uid="uid://dtev8wekiylfe" path="res://Scenes/upgrade_button.gd" id="5_uudjn"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_uudjn"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxtxw"]
-texture = ExtResource("2_d2ffm")
+texture = SubResource("AtlasTexture_uudjn")
 modulate_color = Color(1, 0.658824, 0.160784, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxtxw"]

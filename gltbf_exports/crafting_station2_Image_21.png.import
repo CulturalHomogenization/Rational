@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://pil3eydsk8t1"
+path.s3tc="res://.godot/imported/crafting_station2_Image_21.png-e22047b4ba2ea8e60dd004a57d733803.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "04a8f7ad7ff7a1978ba0e0b7ca8c8ce7"
+}
+
+[deps]
+
+source_file="res://gltbf_exports/crafting_station2_Image_21.png"
+dest_files=["res://.godot/imported/crafting_station2_Image_21.png-e22047b4ba2ea8e60dd004a57d733803.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

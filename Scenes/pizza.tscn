@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh7i3cbdowig1"]
+
+[ext_resource type="Script" uid="uid://bttbm8hl18frq" path="res://Scenes/ingredient.gd" id="1_je5pd"]
+[ext_resource type="PackedScene" uid="uid://clbp5t5e473kq" path="res://gltbf_exports/flatbread_pizza.glb" id="2_je5pd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7s6re"]
+height = 0.173218
+radius = 0.671387
+
+[node name="Pizza" type="RigidBody3D"]
+collision_layer = 3
+mass = 80.0
+script = ExtResource("1_je5pd")
+id = "pizza"
+item_name = "Tactical Flatbread Pizza"
+
+[node name="flatbread_pizza" parent="." instance=ExtResource("2_je5pd")]
+transform = Transform3D(0.993264, 0, 0.115873, 0, 1, 0, -0.115873, 0, 0.993264, -0.00326893, 0.0165104, -0.0153289)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.01309, 0, 0, 0, 1.01309, 0, 0, 0, 1.01309, 0, 0.196075, 0)
+shape = SubResource("CylinderShape3D_7s6re")

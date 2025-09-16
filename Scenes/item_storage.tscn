@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbh4hmx823psw"]
+
+[ext_resource type="Script" uid="uid://bitbewtsprw1j" path="res://Scenes/item_storage.gd" id="1_ondoo"]
+[ext_resource type="Script" uid="uid://b5ekdijjme27n" path="res://Scenes/stationlabel.gd" id="2_q51oi"]
+
+[sub_resource type="Animation" id="Animation_6x7fg"]
+resource_name = "open"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(4, 4),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.74173, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ondoo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q51oi"]
+_data = {
+&"RESET": SubResource("Animation_ondoo"),
+&"open": SubResource("Animation_6x7fg")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6x7fg"]
+
+[node name="ItemStorage" type="StaticBody3D"]
+script = ExtResource("1_ondoo")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543699, -0.500862)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.504644)
+size = Vector3(1, 0.0792236, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, 0.0500488, 0.00878906)
+operation = 2
+size = Vector3(0.746674, 0.899902, 0.728516)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q51oi")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6x7fg")
+
+[node name="Info" type="Label3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 0, 1.00678, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "Test"
+font_size = 24
+script = ExtResource("2_q51oi")

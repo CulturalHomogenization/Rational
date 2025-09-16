@@ -1,0 +1,163 @@
+[gd_scene load_steps=17 format=3 uid="uid://on0id1s4m2qn"]
+
+[ext_resource type="PackedScene" uid="uid://0bne3if8h73q" path="res://gltbf_exports/roaster.glb" id="1_kue3q"]
+[ext_resource type="Texture2D" uid="uid://bc415x5rdcij8" path="res://gltbf_exports/steam-and-smoke-isolated-3d-render-png.webp" id="1_lwl6j"]
+[ext_resource type="Script" uid="uid://dja36p1pckjjf" path="res://Scenes/roaster.gd" id="1_rlih6"]
+[ext_resource type="Script" uid="uid://b5ekdijjme27n" path="res://Scenes/stationlabel.gd" id="4_5rk4s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlih6"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_lwl6j")
+emission_enabled = true
+emission = Color(0.99, 0.6204, 0.198, 1)
+emission_energy_multiplier = 40.0
+billboard_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_5rk4s"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5rk4s"]
+gradient = SubResource("Gradient_5rk4s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sdjkk"]
+emission_shape_scale = Vector3(0.15, 0.15, 0.15)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.0
+color_ramp = SubResource("GradientTexture1D_5rk4s")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uu28a"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwl6j"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.877616, 0.877616, 0.877616, 1)
+albedo_texture = ExtResource("1_lwl6j")
+emission = Color(0.99, 0.6204, 0.198, 1)
+emission_energy_multiplier = 40.0
+billboard_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rlih6"]
+emission_shape_scale = Vector3(0.5, 0.15, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.0
+color_ramp = SubResource("GradientTexture1D_5rk4s")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5rk4s"]
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="Animation" id="Animation_0f1pq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GPUParticles3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GPUParticles3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_02csr"]
+resource_name = "bake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GPUParticles3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GPUParticles3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5rk4s"]
+_data = {
+&"RESET": SubResource("Animation_0f1pq"),
+&"bake": SubResource("Animation_02csr")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lwl6j"]
+height = 1.74072
+radius = 1.09961
+
+[node name="Roaster" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_rlih6")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.69917, 0, 0, 0, 0.69917, 0, 0, 0, 0.69917, -0.337278, -0.495805, -0.0755552)
+visible = false
+material_override = SubResource("StandardMaterial3D_rlih6")
+amount = 40
+randomness = 0.52
+process_material = SubResource("ParticleProcessMaterial_sdjkk")
+draw_pass_1 = SubResource("QuadMesh_uu28a")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.69917, 0, 0, 0, 0.69917, 0, 0, 0, 0.69917, -0.337278, 0.628946, -0.928963)
+visible = false
+material_override = SubResource("StandardMaterial3D_lwl6j")
+amount = 40
+randomness = 0.52
+process_material = SubResource("ParticleProcessMaterial_rlih6")
+draw_pass_1 = SubResource("QuadMesh_5rk4s")
+
+[node name="roaster2" parent="." instance=ExtResource("1_kue3q")]
+transform = Transform3D(0.69917, 0, 0, 0, 0.69917, 0, 0, 0, 0.69917, -0.298506, 0, -0.871701)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5rk4s")
+}
+autoplay = "RESET"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.345507, 0.129639, -0.925958)
+shape = SubResource("CylinderShape3D_lwl6j")
+
+[node name="Info" type="Label3D" parent="."]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, -0.353449, 1.37488, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+font_size = 24
+script = ExtResource("4_5rk4s")
+
+[node name="ItemSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1912, 0.372899, 0.631784)
