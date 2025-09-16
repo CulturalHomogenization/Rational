@@ -13,7 +13,7 @@ enum PlantState {
 @export var plant_data: Dictionary = {} # Will store plant types with their properties
 @export var harvest_hold_time: float = 3.0
 @export var water_timeout: float = 60.0
-@export var growth_time: float = 20.0 # Total time to grow when not waiting for water
+@export var growth_time: float = 60.0 # Total time to grow when not waiting for water
 
 # Current plant state
 var current_state: PlantState = PlantState.EMPTY
@@ -21,7 +21,7 @@ var planted_seed_id: String = ""
 var current_plant_type: Dictionary = {}
 var mesh_instance: MeshInstance3D
 var water_count: int = 0
-var required_waters: int = 1
+var required_waters: int = 3
 
 # Timers
 var growth_timer: float = 0.0
@@ -174,9 +174,6 @@ func process_water_timeout(delta):
 		# Plant dies
 		current_state = PlantState.DEAD
 		update_interactions()
-		if mesh_instance:
-			# Make plant look dead
-			mesh_instance.modulate = Color.BROWN
 		print(current_plant_type.name + " died from lack of water!")
 
 func water_plant():

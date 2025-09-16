@@ -200,7 +200,7 @@ func _physics_process(delta):
 
 	if held_item:
 		held_item.global_position = hold_marker.global_position
-		held_item.global_rotation = Vector3.ZERO
+		held_item.global_rotation = global_rotation + Vector3(0, 90, 0)
 
 func _on_button_pressed() -> void:
 	UpgradeMenu.visible = false

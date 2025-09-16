@@ -7,10 +7,13 @@ extends Area3D
 const COAL = preload("res://Scenes/coal.tscn")
 const IRON = preload("res://Scenes/iron.tscn")
 const JUNK = preload("res://Scenes/junk.tscn")
+const COPPER = preload("res://Scenes/copper.tscn")
+
 var resources = [
-		{ "scene": JUNK, "weight": 90 },
+		{ "scene": JUNK, "weight": 5 },
 		{ "scene": COAL, "weight": 5 },
 		{ "scene": IRON, "weight": 5 },
+		{ "scene": COPPER, "weight": 5 },
 	]
 
 func _ready() -> void:

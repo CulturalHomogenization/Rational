@@ -1147,17 +1147,17 @@ mesh = SubResource("ArrayMesh_66uyi")
 skeleton = NodePath("")
 
 [node name="Cylinder" type="MeshInstance3D" parent="ChopperMesh"]
-transform = Transform3D(2.22424, -7.57198e-09, 0.532276, 0.532276, 1.45038e-08, -2.22424, 1.85543e-07, 0.0491632, 7.38161e-07, -0.467964, 19.0456, 1.14899)
+transform = Transform3D(2.22424, -4.81552e-07, 0.532269, 0.532269, -4.14195e-08, -2.22424, 2.22348e-05, 0.0491632, 3.33966e-06, -0.467964, 19.0456, 1.14899)
 mesh = SubResource("ArrayMesh_7xnyd")
 skeleton = NodePath("")
 
 [node name="AnaMil_low" type="MeshInstance3D" parent="ChopperMesh"]
-transform = Transform3D(0.0104137, -1.52736e-09, -0.0149971, 0.0149971, 2.92004e-09, 0.0104137, 1.52736e-09, -0.0182581, 2.92004e-09, -2.53253, 18.1951, -3.66049)
+transform = Transform3D(0.0104137, 2.83966e-08, -0.0149971, 0.0149971, -5.42894e-08, 0.0104137, -2.83966e-08, -0.0182581, -5.42894e-08, -2.53253, 18.1951, -3.66049)
 mesh = SubResource("ArrayMesh_vam55")
 skeleton = NodePath("")
 
 [node name="AnaMil_low_001" type="MeshInstance3D" parent="ChopperMesh"]
-transform = Transform3D(-0.0641425, 1.3384e-09, 2.80376e-09, -2.80376e-09, 2.92517e-17, -0.0641425, -5.60752e-09, -0.0153095, 1.22556e-16, -3.61455, 11.668, -3.29627)
+transform = Transform3D(-0.0641425, 1.1084e-07, 2.32195e-07, -2.32195e-07, 2.00621e-13, -0.0641425, -4.6439e-07, -0.0153095, 8.40544e-13, -3.61455, 11.668, -3.29627)
 mesh = SubResource("ArrayMesh_fyuev")
 skeleton = NodePath("")
 

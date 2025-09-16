@@ -15,7 +15,7 @@ inertia = Vector3(1, 1, 1)
 can_sleep = false
 continuous_cd = true
 script = ExtResource("1_x6f8n")
-id = "Coal"
+id = "coal"
 item_name = "Coal"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]

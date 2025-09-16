@@ -11,7 +11,7 @@ collision_layer = 3
 mass = 80.0
 continuous_cd = true
 script = ExtResource("1_8jj6o")
-id = "Junk"
+id = "junk"
 item_name = "Junk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
